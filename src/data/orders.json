@@ -1,0 +1,20 @@
+{
+  "orders": [
+    {
+      "type": "buy",
+      "ticker": "NFLX",
+      "date": "01-01-2020",
+      "price": 100.80,
+      "currency": "USD",
+      "fee": 5.1
+    },
+    {
+      "type": "sell",
+      "ticker": "APPL",
+      "date": "01-01-2020",
+      "price": 100.80,
+      "currency": "USD",
+      "fee": 5.1
+    }
+  ]
+}
