@@ -44,6 +44,11 @@ export default {
           field: 'fee',
           label: 'Fee',
         },
+
+        {
+          field: 'quantity',
+          label: 'Quantity',
+        },
       ],
     }
   },

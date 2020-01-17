@@ -2,19 +2,75 @@
   "orders": [
     {
       "type": "buy",
-      "ticker": "NFLX",
+      "ticker": "nflx",
       "date": "01-01-2020",
-      "price": 100.80,
+      "price": 339.07,
       "currency": "USD",
-      "fee": 5.1
+      "fee": 5.1,
+      "quantity": 25
+    },
+    {
+      "type": "buy",
+      "ticker": "aapl",
+      "date": "01-01-2020",
+      "price": 311.34,
+      "currency": "USD",
+      "fee": 5.1,
+      "quantity": 15
+    },
+    {
+      "type": "buy",
+      "ticker": "amzn",
+      "date": "01-01-2020",
+      "price": 1862.02,
+      "currency": "USD",
+      "fee": 5.1,
+      "quantity": 4
+    },
+    {
+      "type": "buy",
+      "ticker": "googl",
+      "date": "01-01-2020",
+      "price": 1439.20,
+      "currency": "USD",
+      "fee": 5.1,
+      "quantity": 3
+    },
+    {
+      "type": "buy",
+      "ticker": "nflx",
+      "date": "01-01-2020",
+      "price": 329.07,
+      "currency": "USD",
+      "fee": 5.1,
+      "quantity": 15
     },
     {
       "type": "sell",
-      "ticker": "APPL",
+      "ticker": "aapl",
       "date": "01-01-2020",
-      "price": 100.80,
+      "price": 301.34,
       "currency": "USD",
-      "fee": 5.1
+      "fee": 5.1,
+      "quantity": 12
+    },
+    {
+      "type": "sell",
+      "ticker": "amzn",
+      "date": "01-01-2020",
+      "price": 1762.02,
+      "currency": "USD",
+      "fee": 5.1,
+      "quantity": 2
+    },
+    {
+      "type": "sell",
+      "ticker": "googl",
+      "date": "01-01-2020",
+      "price": 1339.20,
+      "currency": "USD",
+      "fee": 5.1,
+      "quantity": 2
     }
   ]
 }
