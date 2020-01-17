@@ -3,7 +3,7 @@
     <!-- <BarChart :chartdata="updatedDataArray" />
     <PieChart :chartdata="updatedDataArray" /> -->
     <div class="column">
-      <DonutChart :chartdata="updatedDataArray" />
+      <!-- <DonutChart :chartdata="updatedDataArray" /> -->
     </div>
     <div class="column">
       <h2 class="title is-2">Test</h2>
@@ -21,6 +21,7 @@
           <p class="subtitle is-4 has-text-right has-text-primary">8 %</p>
         </div>
       </div>
+      <LineChart :chartdata="updatedDataArray" />
     </div>
   </div>
 </template>
@@ -29,17 +30,19 @@
 // @ is an alias to /src
 // import BarChart from '@/components/charts/BarChart.vue'
 // import PieChart from '@/components/charts/PieChart.vue'
-import DonutChart from '@/components/charts/DonutChart.vue'
-import { getPorfolioArray, getLabelsArray } from '@/helpers/helpers'
+// import DonutChart from '@/components/charts/DonutChart.vue'
+import LineChart from '@/components/charts/LineChart.vue'
+// import { getPorfolioArray, getLabelsArray } from '@/helpers/helpers'
+import { getCombinedPortfolioArray } from '@/helpers/portfolio'
 import { backgroundColor, borderColor, borderWidth } from '@/data/styles.json'
-import { getPortfolioObject } from '@/helpers/portfolio'
 
 export default {
   name: 'home',
   components: {
     // BarChart,
     // PieChart,
-    DonutChart,
+    // DonutChart,
+    LineChart,
   },
   data: () => ({
     chartData: {
@@ -57,10 +60,16 @@ export default {
   }),
   computed: {
     updatedDataArray() {
-      getPortfolioObject()
+      // convertPortfolioObjectToArray()
       const computedChartData = this.chartData
-      computedChartData.datasets[0].data = getPorfolioArray()
-      computedChartData.labels = getLabelsArray()
+      const combinedPortfolioArray = getCombinedPortfolioArray()
+      // computedChartData.datasets[0].data =
+      //   combinedPortfolioArray.portfolioDataArrayReversed
+      // computedChartData.labels =
+      //   combinedPortfolioArray.portfolioLabelArrayReversed
+      computedChartData.datasets[0].data = ['1', '12', '12']
+      computedChartData.labels = ['hello', 'there', 'how are you']
+      // console.log(computedChartData.datasets[0].data)
       return computedChartData
     },
   },

@@ -3,18 +3,20 @@ import { orders } from '@/data/orders.json'
 import { todaysDate } from '@/helpers/helpers'
 const today = todaysDate()
 
-export const getPortfolioObject = async () => {
-  const portfolioObject = {}
+export const getPortfolioOfStocksObject = async () => {
+  const portfolioOfStocksObject = {}
   for (const order of orders) {
     // const result = hasStockFromOrderInportfolioObject(order, portfolioObject)
-    if (order.ticker in portfolioObject) {
+    if (order.ticker in portfolioOfStocksObject) {
       // adjust value of portfolioObject
-      Object.entries(portfolioObject[order.ticker]).forEach(([key]) => {
+      Object.entries(portfolioOfStocksObject[order.ticker]).forEach(([key]) => {
         if (key > order.date) {
           if (order.type === 'sell') {
-            portfolioObject[order.ticker][key].quantity -= order.quantity
+            portfolioOfStocksObject[order.ticker][key].quantity -=
+              order.quantity
           } else if (order.type === 'buy') {
-            portfolioObject[order.ticker][key].quantity += order.quantity
+            portfolioOfStocksObject[order.ticker][key].quantity +=
+              order.quantity
           } else {
             console.error('Something happened with this order: ', order)
           }
@@ -31,10 +33,45 @@ export const getPortfolioObject = async () => {
         }
       })
 
-      portfolioObject[order.ticker] = portfolioObjectItem
+      portfolioOfStocksObject[order.ticker] = portfolioObjectItem
     }
   }
   // console.log(orders)
-  console.log(portfolioObject)
-  return portfolioObject
+  console.log(portfolioOfStocksObject)
+  return portfolioOfStocksObject
+}
+
+export const getCombinedPortfolioObject = async () => {
+  const combinedPortfolioObject = {}
+  const portfolioOfStocksObject = await getPortfolioOfStocksObject()
+  Object.entries(portfolioOfStocksObject).forEach(([, holding]) => {
+    const stockHolding = holding
+    Object.entries(stockHolding).forEach(([date, value]) => {
+      if (date in combinedPortfolioObject) {
+        combinedPortfolioObject[date] += value.quantity * value.price
+      } else {
+        combinedPortfolioObject[date] = value.quantity * value.price
+      }
+    })
+  })
+  return combinedPortfolioObject
+}
+
+export const getCombinedPortfolioArray = async () => {
+  const portfolioDataArray = []
+  const portfolioLabelArray = []
+  const combinedPortfolioObject = await getCombinedPortfolioObject()
+  Object.entries(combinedPortfolioObject).forEach(([date, value]) => {
+    portfolioDataArray.push(value)
+    portfolioLabelArray.push(date)
+  })
+  const portfolioDataArrayReversed = portfolioDataArray.reverse()
+  const portfolioLabelArrayReversed = portfolioLabelArray.reverse()
+  const portfolioData = {
+    portfolioDataArrayReversed,
+    portfolioLabelArrayReversed,
+  }
+  console.log(portfolioData)
+  // console.log(portfolioData)
+  return portfolioData
 }
