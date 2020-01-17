@@ -1,6 +1,6 @@
 import { orders } from '@/data/orders'
 
-const hasStockFromOrderInPortfolio = (order, portfolio) =>
+export const hasStockFromOrderInPortfolio = (order, portfolio) =>
   portfolio.some(el => el.ticker === order.ticker)
 
 const addOrderToPortfolio = (order, portfolio) => {
@@ -55,4 +55,13 @@ export const getLabelsArray = () => {
     data.push(item.ticker)
   })
   return data
+}
+
+export const todaysDate = () => {
+  const today = new Date()
+  const dd = String(today.getDate()).padStart(2, '0')
+  const mm = String(today.getMonth() + 1).padStart(2, '0') //January is 0!
+  const yyyy = today.getFullYear()
+  const todayString = yyyy + '-' + mm + '-' + dd
+  return todayString
 }

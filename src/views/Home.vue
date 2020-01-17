@@ -6,18 +6,18 @@
       <DonutChart :chartdata="updatedDataArray" />
     </div>
     <div class="column">
-      <h2 class="title is-2">My Portfolio</h2>
+      <h2 class="title is-2">Test</h2>
       <div class="columns">
         <div class="column">
-          <p class="title is-6">Value</p>
+          <p class="title is-6">Test</p>
           <p class="subtitle is-4">$ 100.00</p>
         </div>
         <div class="column">
-          <p class="title is-6 has-text-right">Gain</p>
+          <p class="title is-6 has-text-right">Test</p>
           <p class="subtitle is-4 has-text-right has-text-primary">+$ 200.00</p>
         </div>
         <div class="column">
-          <p class="title is-6 has-text-right">Return</p>
+          <p class="title is-6 has-text-right">Test</p>
           <p class="subtitle is-4 has-text-right has-text-primary">8 %</p>
         </div>
       </div>
@@ -32,7 +32,7 @@
 import DonutChart from '@/components/charts/DonutChart.vue'
 import { getPorfolioArray, getLabelsArray } from '@/helpers/helpers'
 import { backgroundColor, borderColor, borderWidth } from '@/data/styles.json'
-import { getPortfolio } from '@/helpers/portfolio'
+import { getPortfolioObject } from '@/helpers/portfolio'
 
 export default {
   name: 'home',
@@ -57,7 +57,7 @@ export default {
   }),
   computed: {
     updatedDataArray() {
-      getPortfolio()
+      getPortfolioObject()
       const computedChartData = this.chartData
       computedChartData.datasets[0].data = getPorfolioArray()
       computedChartData.labels = getLabelsArray()

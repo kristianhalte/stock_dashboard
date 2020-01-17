@@ -10,7 +10,10 @@ export default {
   },
   data: () => ({
     options: {
-      cutoutPercentage: 75,
+      legend: {
+        display: false,
+      },
+      cutoutPercentage: 70,
     },
   }),
   extends: Pie,

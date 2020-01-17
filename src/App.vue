@@ -6,7 +6,7 @@
           Home
         </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/transactions' }">
-          Transactions
+          Test
         </b-navbar-item>
       </template>
     </b-navbar>
