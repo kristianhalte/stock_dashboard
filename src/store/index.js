@@ -17,7 +17,8 @@ const endDate = getFirstOrderDateInOrdersObject(orders)
 
 export default new Vuex.Store({
   state: {
-    timeSeriesData: [],
+    timeSeriesData: {},
+    // portfolioData: {},
     loading: true,
   },
 
@@ -29,20 +30,28 @@ export default new Vuex.Store({
     updateTimeSeriesData(state, data) {
       state.timeSeriesData = data
     },
+    updatePortfolioData(state, data) {
+      state.portfolioData = data
+    },
     changeLoadingState(state, loading) {
       state.loading = loading
     },
   },
 
   actions: {
-    async loadTimeSeriesData({ commit }) {
+    loadPortfolioData({ commit }) {
+      const data = { content: 'data from portfolio' }
+      commit('updatePortfolioData', data)
+      commit('changeLoadingState', false)
+    },
+    async loadTimeSeriesData({ commit, dispatch }) {
       const data = await getTimeSeriesDataForTickersObject(
         tickersObject,
         today,
         endDate
       )
       commit('updateTimeSeriesData', data)
-      commit('changeLoadingState', false)
+      dispatch('loadPortfolioData')
     },
   },
 })

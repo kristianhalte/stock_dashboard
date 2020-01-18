@@ -56,6 +56,7 @@ import moment from 'moment'
 //   return data
 // }
 
+// helper returning todays date
 export const getTodaysDate = () => {
   const today = new Date()
   const dd = String(today.getDate()).padStart(2, '0')
@@ -65,12 +66,14 @@ export const getTodaysDate = () => {
   return todayString
 }
 
+// helper returning days between two dates as an integer
 export const getDaysBetween = (fromDate, toDate) => {
   const fromDateMoment = moment(fromDate)
   const toDateMoment = moment(toDate)
   return fromDateMoment.diff(toDateMoment, 'days')
 }
 
+// helper returning the date of the first order in the orders object
 export const getFirstOrderDateInOrdersObject = ordersObject => {
   let firstOrderDate = getTodaysDate()
   for (const order of ordersObject) {
@@ -81,6 +84,7 @@ export const getFirstOrderDateInOrdersObject = ordersObject => {
   return firstOrderDate
 }
 
+// helper returning boolean value if ticker exists in an object
 export const hasTickerInObject = (ticker, object) => {
   if (ticker in object) {
     return true
@@ -89,6 +93,7 @@ export const hasTickerInObject = (ticker, object) => {
   }
 }
 
+// helper returning an object of tickers from an object of multiple orders
 export const getTickersObjectInOrdersObject = ordersObject => {
   const tickersObjectInOrders = {}
   for (const order of ordersObject) {
@@ -99,9 +104,11 @@ export const getTickersObjectInOrdersObject = ordersObject => {
   return tickersObjectInOrders
 }
 
+// helper returning boolean value if ticker exists in an array
 export const hasTickerInArray = (ticker, array) =>
   array.some(el => el === ticker)
 
+// helper returning an array of tickers from an object of multiple orders
 export const getTickersArrayInOrdersObject = ordersObject => {
   const tickersArrayInOrders = []
   for (const order of ordersObject) {

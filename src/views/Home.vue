@@ -72,6 +72,12 @@ export default {
       // console.log(computedChartData.datasets[0].data)
       return computedChartData
     },
+    timeSeriesDataFromStore() {
+      return this.$store.state.timeSeriesData
+    },
+    loading() {
+      return this.$store.state.loading
+    },
   },
 }
 </script>
