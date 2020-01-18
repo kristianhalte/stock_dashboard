@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+import { getTimeSeriesData } from '@/services/alpha'
+
 export default new Vuex.Store({
   state: {
     returnedData: [],
@@ -23,8 +25,8 @@ export default new Vuex.Store({
   },
 
   actions: {
-    async loadData({ commit }) {
-      const data = await getData()
+    async loadTimeSeriesData({ commit }) {
+      const data = await getTimeSeriesData()
       commit('updateData', data)
       commit('changeLoadingState', false)
     },
