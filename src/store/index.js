@@ -3,11 +3,21 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import { getTimeSeriesData } from '@/services/alpha'
+import { orders } from '@/data/orders'
+import { getTimeSeriesDataForTickersObject } from '@/services/alpha'
+import {
+  getTodaysDate,
+  getTickersObjectInOrdersObject,
+  getFirstOrderDateInOrdersObject,
+} from '@/helpers/helpers'
+
+const tickersObject = getTickersObjectInOrdersObject(orders)
+const today = getTodaysDate()
+const endDate = getFirstOrderDateInOrdersObject(orders)
 
 export default new Vuex.Store({
   state: {
-    returnedData: [],
+    timeSeriesData: [],
     loading: true,
   },
 
@@ -16,8 +26,8 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    updateData(state, data) {
-      state.returnedData = data
+    updateTimeSeriesData(state, data) {
+      state.timeSeriesData = data
     },
     changeLoadingState(state, loading) {
       state.loading = loading
@@ -26,8 +36,12 @@ export default new Vuex.Store({
 
   actions: {
     async loadTimeSeriesData({ commit }) {
-      const data = await getTimeSeriesData()
-      commit('updateData', data)
+      const data = await getTimeSeriesDataForTickersObject(
+        tickersObject,
+        today,
+        endDate
+      )
+      commit('updateTimeSeriesData', data)
       commit('changeLoadingState', false)
     },
   },

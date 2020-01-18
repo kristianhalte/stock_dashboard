@@ -35,12 +35,6 @@ import LineChart from '@/components/charts/LineChart.vue'
 // import { getPorfolioArray, getLabelsArray } from '@/helpers/helpers'
 // import { getCombinedPortfolioArray } from '@/helpers/portfolio'
 import { backgroundColor, borderColor, borderWidth } from '@/data/styles.json'
-import { orders } from '@/data/orders'
-import {
-  getTickersObjectInOrders,
-  getTickersArrayInOrders,
-  getFirstOrderDateInOrders,
-} from '@/helpers/helpers'
 
 export default {
   name: 'home',
@@ -80,12 +74,6 @@ export default {
     },
   },
   created() {
-    console.log('getTickersObjectInOrders:\n', getTickersObjectInOrders(orders))
-    console.log('getTickersArrayInOrders:\n', getTickersArrayInOrders(orders))
-    console.log(
-      'getFirstOrderDateInOrders:\n',
-      getFirstOrderDateInOrders(orders)
-    )
     this.$store.dispatch('loadTimeSeriesData')
   },
 }

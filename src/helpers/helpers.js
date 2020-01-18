@@ -1,3 +1,4 @@
+import moment from 'moment'
 // export const hasStockFromOrderInPortfolio = (order, portfolio) =>
 //   portfolio.some(el => el.ticker === order.ticker)
 
@@ -55,7 +56,7 @@
 //   return data
 // }
 
-export const todaysDate = () => {
+export const getTodaysDate = () => {
   const today = new Date()
   const dd = String(today.getDate()).padStart(2, '0')
   const mm = String(today.getMonth() + 1).padStart(2, '0') //January is 0!
@@ -64,9 +65,15 @@ export const todaysDate = () => {
   return todayString
 }
 
-export const getFirstOrderDateInOrders = orders => {
-  let firstOrderDate = todaysDate()
-  for (const order of orders) {
+export const getDaysBetween = (fromDate, toDate) => {
+  const fromDateMoment = moment(fromDate)
+  const toDateMoment = moment(toDate)
+  return fromDateMoment.diff(toDateMoment, 'days')
+}
+
+export const getFirstOrderDateInOrdersObject = ordersObject => {
+  let firstOrderDate = getTodaysDate()
+  for (const order of ordersObject) {
     if (order.date < firstOrderDate) {
       firstOrderDate = order.date
     }
@@ -82,12 +89,9 @@ export const hasTickerInObject = (ticker, object) => {
   }
 }
 
-export const hasTickerInArray = (ticker, array) =>
-  array.some(el => el === ticker)
-
-export const getTickersObjectInOrders = orders => {
+export const getTickersObjectInOrdersObject = ordersObject => {
   const tickersObjectInOrders = {}
-  for (const order of orders) {
+  for (const order of ordersObject) {
     if (!hasTickerInObject(order.ticker, tickersObjectInOrders)) {
       tickersObjectInOrders[order.ticker] = {}
     }
@@ -95,9 +99,12 @@ export const getTickersObjectInOrders = orders => {
   return tickersObjectInOrders
 }
 
-export const getTickersArrayInOrders = orders => {
+export const hasTickerInArray = (ticker, array) =>
+  array.some(el => el === ticker)
+
+export const getTickersArrayInOrdersObject = ordersObject => {
   const tickersArrayInOrders = []
-  for (const order of orders) {
+  for (const order of ordersObject) {
     if (!hasTickerInArray(order.ticker, tickersArrayInOrders)) {
       tickersArrayInOrders.push(order.ticker)
     }
