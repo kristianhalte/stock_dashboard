@@ -15,3 +15,12 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'app',
+  created() {
+    this.$store.dispatch('loadTimeSeriesData')
+  },
+}
+</script>

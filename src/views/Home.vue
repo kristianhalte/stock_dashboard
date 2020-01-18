@@ -73,8 +73,5 @@ export default {
       return computedChartData
     },
   },
-  created() {
-    this.$store.dispatch('loadTimeSeriesData')
-  },
 }
 </script>

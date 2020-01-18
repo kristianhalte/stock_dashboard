@@ -26,11 +26,11 @@ export const getTimeSeriesDataForTicker = async (ticker, today, endDate) => {
         const response = {}
         Object.entries(timeSeries).forEach(([key, value]) => {
           if (key > endDate) {
-            response[key] = value
+            response[key] = { close: value['4. close'] }
+            // response[key] = value
           }
         })
         return response
-        // return timeSeries
       })
   } catch (err) {
     console.log(err)
