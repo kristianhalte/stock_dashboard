@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import { orders } from '@/data/orders.json'
+import { ordersArray } from '@/data/orders.json'
 export default {
   name: 'Orders',
   data() {
     return {
-      orders: orders,
+      orders: ordersArray,
       columns: [
         {
           field: 'id',

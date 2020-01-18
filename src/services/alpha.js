@@ -1,6 +1,13 @@
 import alphavantage from 'alphavantage'
 import Bottleneck from 'bottleneck'
-import { getDaysBetween } from '@/helpers/helpers'
+import extend from 'extend'
+import {
+  getDaysBetween,
+  getTodaysDate,
+  getFirstOrderDateFromOrdersArray,
+  getTickersArrayInOrdersArray,
+  getQuantityOfStockByDateAndOrdersArray,
+} from '@/helpers/helpers'
 const apiKey = process.env.VUE_APP_ALPHA_VANTAGE_API_KEY
 
 const limiter = new Bottleneck({
@@ -13,42 +20,60 @@ const limiter = new Bottleneck({
 
 const alpha = alphavantage({ key: apiKey })
 
-export const getTimeSeriesDataForTicker = async (ticker, today, endDate) => {
+const getArrayOfTimeSeriesFromOrdersArray = async ordersArray => {
+  const today = getTodaysDate()
+  const endDate = getFirstOrderDateFromOrdersArray(ordersArray)
+  const tickersArray = getTickersArrayInOrdersArray(ordersArray)
   let outputsize = 'compact'
   if (getDaysBetween(today, endDate) > 100) {
     outputsize = 'full'
   }
   try {
-    return limiter
-      .schedule(() => alpha.data.daily(ticker, outputsize))
-      .then(data => {
-        const timeSeries = data['Time Series (Daily)']
-        const response = {}
-        Object.entries(timeSeries).forEach(([key, value]) => {
-          if (key > endDate) {
-            response[key] = { close: value['4. close'] }
-            // response[key] = value
+    return limiter.schedule(() => {
+      const allTimeSeries = tickersArray.map(ticker =>
+        alpha.data.daily(ticker, outputsize).then(data => {
+          const timeSeriesObject = data['Time Series (Daily)']
+          const timeSeriesDataArrayForTicker = []
+          for (const [date, value] of Object.entries(timeSeriesObject)) {
+            if (date > endDate) {
+              const obj = {
+                date: date,
+                holdings: {
+                  [ticker]: {
+                    close: value['4. close'],
+                    quantity: getQuantityOfStockByDateAndOrdersArray(
+                      ticker,
+                      date,
+                      ordersArray
+                    ),
+                  },
+                },
+              }
+              timeSeriesDataArrayForTicker.push(obj)
+            }
           }
+          return timeSeriesDataArrayForTicker
         })
-        return response
-      })
+      )
+      return Promise.all(allTimeSeries)
+    })
   } catch (err) {
     console.log(err)
   }
 }
 
-export const getTimeSeriesDataForTickersObject = async (
-  tickersObject,
-  today,
-  endDate
-) => {
-  const timeSeriesDataForTickersObject = {}
-  for (const [ticker] of Object.entries(tickersObject)) {
-    timeSeriesDataForTickersObject[ticker] = await getTimeSeriesDataForTicker(
-      ticker,
-      today,
-      endDate
-    )
-  }
-  return timeSeriesDataForTickersObject
+export const getPortfolioDataArrayFromOrdersArray = async ordersArray => {
+  const arrayOfTimeSeriesFromOrdersArray = await getArrayOfTimeSeriesFromOrdersArray(
+    ordersArray
+  )
+  const portfolioDataArray = arrayOfTimeSeriesFromOrdersArray[0]
+  arrayOfTimeSeriesFromOrdersArray.forEach(arrayOfTimeSeries => {
+    portfolioDataArray.forEach((dataObject, index) => {
+      portfolioDataArray[index].holdings = extend(
+        dataObject.holdings,
+        arrayOfTimeSeries[index].holdings
+      )
+    })
+  })
+  return portfolioDataArray
 }

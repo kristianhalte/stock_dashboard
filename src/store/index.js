@@ -3,22 +3,12 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import { orders } from '@/data/orders'
-import { getTimeSeriesDataForTickersObject } from '@/services/alpha'
-import {
-  getTodaysDate,
-  getTickersObjectInOrdersObject,
-  getFirstOrderDateInOrdersObject,
-} from '@/helpers/helpers'
-
-const tickersObject = getTickersObjectInOrdersObject(orders)
-const today = getTodaysDate()
-const endDate = getFirstOrderDateInOrdersObject(orders)
+import { ordersArray } from '@/data/orders'
+import { getPortfolioDataArrayFromOrdersArray } from '@/services/alpha'
 
 export default new Vuex.Store({
   state: {
-    timeSeriesData: {},
-    // portfolioData: {},
+    portfolioData: {},
     loading: true,
   },
 
@@ -27,9 +17,6 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    updateTimeSeriesData(state, data) {
-      state.timeSeriesData = data
-    },
     updatePortfolioData(state, data) {
       state.portfolioData = data
     },
@@ -39,19 +26,12 @@ export default new Vuex.Store({
   },
 
   actions: {
-    loadPortfolioData({ commit }) {
-      const data = { content: 'data from portfolio' }
-      commit('updatePortfolioData', data)
-      commit('changeLoadingState', false)
-    },
-    async loadTimeSeriesData({ commit, dispatch }) {
-      const data = await getTimeSeriesDataForTickersObject(
-        tickersObject,
-        today,
-        endDate
+    async loadPortfolioData({ commit }) {
+      const portfolioDataArray = await getPortfolioDataArrayFromOrdersArray(
+        ordersArray
       )
-      commit('updateTimeSeriesData', data)
-      dispatch('loadPortfolioData')
+      commit('updatePortfolioData', portfolioDataArray)
+      commit('changeLoadingState', false)
     },
   },
 })

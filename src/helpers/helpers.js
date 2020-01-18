@@ -1,60 +1,21 @@
 import moment from 'moment'
-// export const hasStockFromOrderInPortfolio = (order, portfolio) =>
-//   portfolio.some(el => el.ticker === order.ticker)
 
-// const addOrderToPortfolio = (order, portfolio) => {
-//   const { ticker, quantity, type, price } = order
-//   const portfolioItem = {
-//     ticker,
-//     quantity,
-//     price,
-//   }
-//   if (type === 'buy') {
-//     return portfolio.push(portfolioItem)
-//   } else {
-//     return portfolio
-//   }
-// }
+/* -----=============================----- */
+/* -----=====  GENERAL HELPERS  =====----- */
+/* -----=============================----- */
 
-// const updateOrderQuantityOfStockInPortfolio = (order, portfolio) => {
-//   const { ticker, quantity, type } = order
-//   const index = portfolio.findIndex(el => el.ticker == ticker)
-//   if (type === 'buy') {
-//     return (portfolio[index].quantity += quantity)
-//   } else {
-//     return (portfolio[index].quantity -= quantity)
-//   }
-// }
+// helper returning boolean value if key exists in an object
+export const isKeyInObject = (key, object) => {
+  if (key in object) {
+    return true
+  } else {
+    return false
+  }
+}
 
-// export const getPortfolio = orders => {
-//   const portfolio = []
-//   orders.forEach(order => {
-//     if (hasStockFromOrderInPortfolio(order, portfolio)) {
-//       return updateOrderQuantityOfStockInPortfolio(order, portfolio)
-//     } else {
-//       return addOrderToPortfolio(order, portfolio)
-//     }
-//   })
-//   return portfolio
-// }
-
-// export const getPorfolioArray = () => {
-//   const data = []
-//   const portfolio = getPortfolio()
-//   portfolio.forEach(item => {
-//     data.push(item.quantity * item.price)
-//   })
-//   return data
-// }
-
-// export const getLabelsArray = () => {
-//   const data = []
-//   const portfolio = getPortfolio()
-//   portfolio.forEach(item => {
-//     data.push(item.ticker)
-//   })
-//   return data
-// }
+/* -----===========================----- */
+/* -----=====  DATES HELPERS  =====----- */
+/* -----===========================----- */
 
 // helper returning todays date
 export const getTodaysDate = () => {
@@ -73,10 +34,14 @@ export const getDaysBetween = (fromDate, toDate) => {
   return fromDateMoment.diff(toDateMoment, 'days')
 }
 
-// helper returning the date of the first order in the orders object
-export const getFirstOrderDateInOrdersObject = ordersObject => {
+/* -----============================----- */
+/* -----=====  ORDERS HELPERS  =====----- */
+/* -----============================----- */
+
+// helper returning the date of the first order in an array of orders
+export const getFirstOrderDateFromOrdersArray = ordersArray => {
   let firstOrderDate = getTodaysDate()
-  for (const order of ordersObject) {
+  for (const order of ordersArray) {
     if (order.date < firstOrderDate) {
       firstOrderDate = order.date
     }
@@ -84,37 +49,71 @@ export const getFirstOrderDateInOrdersObject = ordersObject => {
   return firstOrderDate
 }
 
-// helper returning boolean value if ticker exists in an object
-export const hasTickerInObject = (ticker, object) => {
-  if (ticker in object) {
-    return true
-  } else {
-    return false
+// helper returning the ticker of the first buy order in an array of orders
+export const getFirstTickerFromOrdersArray = ordersArray => {
+  for (const order of ordersArray) {
+    if (order.type === 'buy') {
+      return order.ticker
+    }
   }
 }
 
-// helper returning an object of tickers from an object of multiple orders
-export const getTickersObjectInOrdersObject = ordersObject => {
-  const tickersObjectInOrders = {}
+// helper returning an object of tickers from an array of orders
+export const getTickersObjectFromOrdersArray = ordersObject => {
+  const tickersObjectFromOrdersArray = {}
   for (const order of ordersObject) {
-    if (!hasTickerInObject(order.ticker, tickersObjectInOrders)) {
-      tickersObjectInOrders[order.ticker] = {}
+    if (!isKeyInObject(order.ticker, tickersObjectFromOrdersArray)) {
+      tickersObjectFromOrdersArray[order.ticker] = {}
     }
   }
-  return tickersObjectInOrders
+  return tickersObjectFromOrdersArray
 }
 
 // helper returning boolean value if ticker exists in an array
-export const hasTickerInArray = (ticker, array) =>
-  array.some(el => el === ticker)
+export const isValueInArray = (value, array) => array.some(el => el === value)
 
-// helper returning an array of tickers from an object of multiple orders
-export const getTickersArrayInOrdersObject = ordersObject => {
-  const tickersArrayInOrders = []
-  for (const order of ordersObject) {
-    if (!hasTickerInArray(order.ticker, tickersArrayInOrders)) {
-      tickersArrayInOrders.push(order.ticker)
+// helper returning an array of tickers from an array of orders
+export const getTickersArrayInOrdersArray = ordersArray => {
+  const tickersArrayInOrdersArray = []
+  for (const orderObject of ordersArray) {
+    if (!isValueInArray(orderObject.ticker, tickersArrayInOrdersArray)) {
+      tickersArrayInOrdersArray.push(orderObject.ticker)
     }
   }
-  return tickersArrayInOrders
+  return tickersArrayInOrdersArray
+}
+
+/* -----===============================----- */
+/* -----=====  PORTFOLIO HELPERS  =====----- */
+/* -----===============================----- */
+
+// helper returning quantity of stocks held at given date based on an array of orders
+export const getQuantityOfStockByDateAndOrdersArray = (
+  ticker,
+  date,
+  ordersArray
+) => {
+  let quantity = 0
+  ordersArray.forEach(orderObject => {
+    if (orderObject.ticker === ticker && orderObject.date <= date) {
+      if (orderObject.type === 'buy') {
+        quantity += orderObject.quantity
+      } else if (orderObject.type === 'sell') {
+        quantity -= orderObject.quantity
+      }
+    }
+  })
+  return quantity
+}
+
+/* -----===========================----- */
+/* -----=====  CHART HELPERS  =====----- */
+/* -----===========================----- */
+
+// helper returning
+export const getPortfolioLineChartDataset = (
+  timeSeriesDataFromStore,
+  portfolioDataFromStore
+) => {
+  console.log(timeSeriesDataFromStore, portfolioDataFromStore)
 }
