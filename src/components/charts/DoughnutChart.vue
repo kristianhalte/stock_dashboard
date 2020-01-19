@@ -1,7 +1,7 @@
 <script>
 import { Pie } from 'vue-chartjs'
 export default {
-  name: 'DonutChart',
+  name: 'DoughnutChart',
   props: {
     chartdata: {
       type: Object,

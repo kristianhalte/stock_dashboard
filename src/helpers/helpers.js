@@ -1,4 +1,5 @@
 import moment from 'moment'
+import { borderColor, borderWidth } from '@/data/styles.json'
 
 /* -----=============================----- */
 /* -----=====  GENERAL HELPERS  =====----- */
@@ -73,14 +74,14 @@ export const getTickersObjectFromOrdersArray = ordersObject => {
 export const isValueInArray = (value, array) => array.some(el => el === value)
 
 // helper returning an array of tickers from an array of orders
-export const getTickersArrayInOrdersArray = ordersArray => {
-  const tickersArrayInOrdersArray = []
+export const getTickersArrayFromOrdersArray = ordersArray => {
+  const tickersArrayFromOrdersArray = []
   for (const orderObject of ordersArray) {
-    if (!isValueInArray(orderObject.ticker, tickersArrayInOrdersArray)) {
-      tickersArrayInOrdersArray.push(orderObject.ticker)
+    if (!isValueInArray(orderObject.ticker, tickersArrayFromOrdersArray)) {
+      tickersArrayFromOrdersArray.push(orderObject.ticker)
     }
   }
-  return tickersArrayInOrdersArray
+  return tickersArrayFromOrdersArray
 }
 
 /* -----===============================----- */
@@ -88,7 +89,7 @@ export const getTickersArrayInOrdersArray = ordersArray => {
 /* -----===============================----- */
 
 // helper returning quantity of stocks held at given date based on an array of orders
-export const getQuantityOfStockByDateAndOrdersArray = (
+export const getQuantityOfStockByDateFromOrdersArray = (
   ticker,
   date,
   ordersArray
@@ -106,14 +107,50 @@ export const getQuantityOfStockByDateAndOrdersArray = (
   return quantity
 }
 
+// helper returning
+export const getLabelsArrayFromPortfolioDataArray = portfolioDataArray => {
+  const labels = []
+  portfolioDataArray.reverse().forEach(dateObject => {
+    labels.push(dateObject.date)
+  })
+  return labels
+}
+
+// helper returning
+export const getHoldingsObjectValue = holdingsObject => {
+  let holdingValue = 0
+  for (const [, value] of Object.entries(holdingsObject)) {
+    holdingValue += value.close * value.quantity
+  }
+  return holdingValue
+}
+
+// helper returning
+export const getDailyValueFromPortfolioDataArray = portfolioDataArray => {
+  const data = []
+  portfolioDataArray.forEach(dateObject => {
+    data.push(getHoldingsObjectValue(dateObject.holdings))
+  })
+  return data
+}
+
 /* -----===========================----- */
 /* -----=====  CHART HELPERS  =====----- */
 /* -----===========================----- */
 
 // helper returning
-export const getPortfolioLineChartDataset = (
-  timeSeriesDataFromStore,
-  portfolioDataFromStore
-) => {
-  console.log(timeSeriesDataFromStore, portfolioDataFromStore)
+export const getPortfolioLineChartDataset = portfolioDataArray => {
+  const chartData = {
+    labels: getLabelsArrayFromPortfolioDataArray(portfolioDataArray),
+    datasets: [
+      {
+        label: 'Value',
+        data: getDailyValueFromPortfolioDataArray(portfolioDataArray),
+        backgroundColor: 'rgba(0, 0, 0, 0.0)',
+        borderColor: borderColor[0],
+        borderWidth,
+      },
+    ],
+  }
+  return chartData
 }

@@ -8,7 +8,7 @@ import { getPortfolioDataArrayFromOrdersArray } from '@/services/alpha'
 
 export default new Vuex.Store({
   state: {
-    portfolioData: {},
+    portfolioDataArray: {},
     loading: true,
   },
 
@@ -17,8 +17,8 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    updatePortfolioData(state, data) {
-      state.portfolioData = data
+    updatePortfolioDataArray(state, portfolioDataArray) {
+      state.portfolioDataArray = portfolioDataArray
     },
     changeLoadingState(state, loading) {
       state.loading = loading
@@ -30,7 +30,7 @@ export default new Vuex.Store({
       const portfolioDataArray = await getPortfolioDataArrayFromOrdersArray(
         ordersArray
       )
-      commit('updatePortfolioData', portfolioDataArray)
+      commit('updatePortfolioDataArray', portfolioDataArray)
       commit('changeLoadingState', false)
     },
   },

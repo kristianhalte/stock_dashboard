@@ -5,8 +5,8 @@ import {
   getDaysBetween,
   getTodaysDate,
   getFirstOrderDateFromOrdersArray,
-  getTickersArrayInOrdersArray,
-  getQuantityOfStockByDateAndOrdersArray,
+  getTickersArrayFromOrdersArray,
+  getQuantityOfStockByDateFromOrdersArray,
 } from '@/helpers/helpers'
 const apiKey = process.env.VUE_APP_ALPHA_VANTAGE_API_KEY
 
@@ -23,7 +23,7 @@ const alpha = alphavantage({ key: apiKey })
 const getArrayOfTimeSeriesFromOrdersArray = async ordersArray => {
   const today = getTodaysDate()
   const endDate = getFirstOrderDateFromOrdersArray(ordersArray)
-  const tickersArray = getTickersArrayInOrdersArray(ordersArray)
+  const tickersArray = getTickersArrayFromOrdersArray(ordersArray)
   let outputsize = 'compact'
   if (getDaysBetween(today, endDate) > 100) {
     outputsize = 'full'
@@ -41,7 +41,7 @@ const getArrayOfTimeSeriesFromOrdersArray = async ordersArray => {
                 holdings: {
                   [ticker]: {
                     close: value['4. close'],
-                    quantity: getQuantityOfStockByDateAndOrdersArray(
+                    quantity: getQuantityOfStockByDateFromOrdersArray(
                       ticker,
                       date,
                       ordersArray

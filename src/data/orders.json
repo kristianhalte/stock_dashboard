@@ -7,7 +7,7 @@
       "price": 339.07,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 25
+      "quantity": 2
     },
     {
       "type": "buy",
@@ -16,7 +16,7 @@
       "price": 311.34,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 15
+      "quantity": 2
     },
     {
       "type": "buy",
@@ -25,16 +25,16 @@
       "price": 1862.02,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 4
+      "quantity": 1
     },
     {
       "type": "buy",
       "ticker": "googl",
-      "date": "2019-08-07",
+      "date": "2020-01-07",
       "price": 1439.20,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 3
+      "quantity": 1
     },
     {
       "type": "buy",
@@ -43,28 +43,28 @@
       "price": 329.07,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 15
+      "quantity": 3
     },
     {
-      "type": "sell",
+      "type": "buy",
       "ticker": "aapl",
       "date": "2020-01-09",
       "price": 301.34,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 12
+      "quantity": 2
     },
     {
-      "type": "sell",
+      "type": "buy",
       "ticker": "amzn",
       "date": "2020-01-10",
       "price": 1762.02,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 2
+      "quantity": 1
     },
     {
-      "type": "sell",
+      "type": "buy",
       "ticker": "googl",
       "date": "2020-01-12",
       "price": 1339.20,
