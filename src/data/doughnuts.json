@@ -1,0 +1,104 @@
+{
+  "doughnutsArray": [
+    {
+      "name": "Real Estate",
+      "optimalVolume": 20,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    },
+    {
+      "name": "Bonds",
+      "optimalVolume": 15,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    },
+    {
+      "name": "Finance",
+      "optimalVolume": 15,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    },
+    {
+      "name": "Utilities",
+      "optimalVolume": 12,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    },
+    {
+      "name": "Health Care",
+      "optimalVolume": 8,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    },
+    {
+      "name": "Consumer",
+      "optimalVolume": 6,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    },
+    {
+      "name": "Telecom",
+      "optimalVolume": 4,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    },
+    {
+      "name": "Industrials",
+      "optimalVolume": 10,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    },
+    {
+      "name": "Tech",
+      "optimalVolume": 5,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    },
+    {
+      "name": "Energy",
+      "optimalVolume": 5,
+      "holdings": {
+        "nflx": 10,
+        "aapl": 20,
+        "googl": 40,
+        "amzn": 30
+      }
+    }
+  ]
+}

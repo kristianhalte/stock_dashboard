@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { borderColor, borderWidth } from '@/data/styles.json'
+import { backgroundColor, borderColor, borderWidth } from '@/data/styles.json'
 
 /* -----=============================----- */
 /* -----=====  GENERAL HELPERS  =====----- */
@@ -89,6 +89,21 @@ export const getTickersArrayFromOrdersArray = ordersArray => {
 /* -----===============================----- */
 
 // helper returning quantity of stocks held at given date based on an array of orders
+export const getTotalSpendByDateFromOrdersArray = (date, ordersArray) => {
+  let totalSpend = 8
+  ordersArray.forEach(orderObject => {
+    if (orderObject.date <= date) {
+      if (orderObject.type === 'buy') {
+        totalSpend += orderObject.quantity * orderObject.price
+      } else if (orderObject.type === 'sell') {
+        totalSpend -= orderObject.quantity * orderObject.price
+      }
+    }
+  })
+  return totalSpend
+}
+
+// helper returning quantity of stocks held at given date based on an array of orders
 export const getQuantityOfStockByDateFromOrdersArray = (
   ticker,
   date,
@@ -134,6 +149,63 @@ export const getDailyValueFromPortfolioDataArray = portfolioDataArray => {
   return data
 }
 
+// helper returning
+export const getTodaysValue = portfolioDataArray => {
+  const lastIndex = portfolioDataArray.length - 1
+  const todaysValue = getHoldingsObjectValue(
+    portfolioDataArray[lastIndex].holdings
+  )
+  // getHoldingsObjectValue(portfolioDataArray[0].holdings)
+  return todaysValue
+}
+
+// helper returning
+export const getTodaysGain = portfolioDataArray => {
+  let todaysGain = 0
+  const lastIndex = portfolioDataArray.length - 1
+  const todaysSpend = portfolioDataArray[lastIndex].spend
+  const todaysValue = getHoldingsObjectValue(
+    portfolioDataArray[lastIndex].holdings
+  )
+  todaysGain = todaysValue - todaysSpend
+  return todaysGain
+}
+
+// helper returning
+export const getTodaysReturn = portfolioDataArray => {
+  let todaysReturn = 8.24
+  const lastIndex = portfolioDataArray.length - 1
+  const todaysSpend = portfolioDataArray[lastIndex].spend
+  const todaysValue = getHoldingsObjectValue(
+    portfolioDataArray[lastIndex].holdings
+  )
+  const todaysGain = todaysValue - todaysSpend
+  todaysReturn = (todaysGain / todaysSpend) * 100
+  return todaysReturn
+}
+
+/* -----===============================----- */
+/* -----=====  DOUGHNUTS HELPERS  =====----- */
+/* -----===============================----- */
+
+// helper returning
+export const getLabelsArrayFromDoughnutsArray = doughnutsArray => {
+  const labels = []
+  doughnutsArray.forEach(dateObject => {
+    labels.push(dateObject.name)
+  })
+  return labels
+}
+
+// helper returning
+export const getOptimalVolumeArrayFromDoughnutsArray = doughnutsArray => {
+  const data = []
+  doughnutsArray.forEach(dateObject => {
+    data.push(dateObject.optimalVolume)
+  })
+  return data
+}
+
 /* -----===========================----- */
 /* -----=====  CHART HELPERS  =====----- */
 /* -----===========================----- */
@@ -148,6 +220,23 @@ export const getPortfolioLineChartDataset = portfolioDataArray => {
         data: getDailyValueFromPortfolioDataArray(portfolioDataArray),
         backgroundColor: 'rgba(0, 0, 0, 0.0)',
         borderColor: borderColor[0],
+        borderWidth: 3,
+      },
+    ],
+  }
+  return chartData
+}
+
+// helper returning
+export const getDoughnutChartDataset = doughnutsArray => {
+  console.log(doughnutsArray)
+  const chartData = {
+    labels: getLabelsArrayFromDoughnutsArray(doughnutsArray),
+    datasets: [
+      {
+        data: getOptimalVolumeArrayFromDoughnutsArray(doughnutsArray),
+        backgroundColor,
+        borderColor,
         borderWidth,
       },
     ],

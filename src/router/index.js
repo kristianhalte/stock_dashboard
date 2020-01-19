@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Doughnut from '../views/Doughnut.vue'
 
 Vue.use(VueRouter)
 
@@ -18,6 +19,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Transactions.vue'),
+  },
+  {
+    path: '/doughnut/:id',
+    name: 'doughnut',
+    component: Doughnut,
   },
 ]
 

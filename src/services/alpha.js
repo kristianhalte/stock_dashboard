@@ -6,6 +6,7 @@ import {
   getTodaysDate,
   getFirstOrderDateFromOrdersArray,
   getTickersArrayFromOrdersArray,
+  getTotalSpendByDateFromOrdersArray,
   getQuantityOfStockByDateFromOrdersArray,
 } from '@/helpers/helpers'
 const apiKey = process.env.VUE_APP_ALPHA_VANTAGE_API_KEY
@@ -35,9 +36,10 @@ const getArrayOfTimeSeriesFromOrdersArray = async ordersArray => {
           const timeSeriesObject = data['Time Series (Daily)']
           const timeSeriesDataArrayForTicker = []
           for (const [date, value] of Object.entries(timeSeriesObject)) {
-            if (date > endDate) {
+            if (date >= endDate) {
               const obj = {
                 date: date,
+                spend: getTotalSpendByDateFromOrdersArray(date, ordersArray),
                 holdings: {
                   [ticker]: {
                     close: value['4. close'],
