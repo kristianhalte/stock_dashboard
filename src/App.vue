@@ -6,13 +6,37 @@
           Home
         </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/transactions' }">
-          Transactions
+          Test
         </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/doughnut/0' }">
-          Doughnuts 0
+          D 0
         </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/doughnut/1' }">
-          Doughnuts 2
+          D 1
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/2' }">
+          D 2
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/3' }">
+          D 3
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/4' }">
+          D 4
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/5' }">
+          D 5
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/6' }">
+          D 6
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/7' }">
+          D 7
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/8' }">
+          D 8
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/9' }">
+          D 9
         </b-navbar-item>
       </template>
     </b-navbar>

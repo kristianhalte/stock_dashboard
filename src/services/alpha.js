@@ -1,15 +1,16 @@
 import alphavantage from 'alphavantage'
 import Bottleneck from 'bottleneck'
 import extend from 'extend'
+import { doughnutsArray } from '@/data/doughnuts.json'
 import {
   getDaysBetween,
   getTodaysDate,
   getFirstOrderDateFromOrdersArray,
   getTickersArrayFromOrdersArray,
-  getDoughnutsArrayFromOrdersArray,
   getTotalSpendByDateFromOrdersArray,
   getQuantityOfStockByDateFromOrdersArray,
-  getDoughnutsDataArrayFromDoughnutsArray,
+  getDoughnutsDataArrayFromDoughnutsLabelsArray,
+  getDoughnutsLabelsArrayFromDoughnutsArray,
 } from '@/helpers/helpers'
 const apiKey = process.env.VUE_APP_ALPHA_VANTAGE_API_KEY
 
@@ -27,7 +28,9 @@ const getArrayOfTimeSeriesFromOrdersArray = async ordersArray => {
   const today = getTodaysDate()
   const endDate = getFirstOrderDateFromOrdersArray(ordersArray)
   const tickersArray = getTickersArrayFromOrdersArray(ordersArray)
-  const doughnutsArray = getDoughnutsArrayFromOrdersArray(ordersArray)
+  const doughnutsLabelsArray = getDoughnutsLabelsArrayFromDoughnutsArray(
+    doughnutsArray
+  )
   let outputsize = 'compact'
   if (getDaysBetween(today, endDate) > 100) {
     outputsize = 'full'
@@ -53,8 +56,8 @@ const getArrayOfTimeSeriesFromOrdersArray = async ordersArray => {
                     ),
                   },
                 },
-                doughnutsDataArray: getDoughnutsDataArrayFromDoughnutsArray(
-                  doughnutsArray,
+                doughnutsDataArray: getDoughnutsDataArrayFromDoughnutsLabelsArray(
+                  doughnutsLabelsArray,
                   date,
                   ordersArray,
                   tickersArray
