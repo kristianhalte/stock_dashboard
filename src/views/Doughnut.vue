@@ -2,7 +2,7 @@
   <div class="columns">
     <div class="column">
       <div class="section">
-        <p class="subtitle is-4" v-if="loading">Loading...</p>
+        <p class="subtitle is-4" v-if="loading">{{ $t('loading') }}</p>
         <DoughnutChart
           v-else
           :chart-data="updatedDoughnutData.doughnutChartDataset"
@@ -11,20 +11,20 @@
     </div>
     <div class="column">
       <div class="section">
-        <h2 class="title is-2" v-if="loading">Loading...</h2>
+        <h2 class="title is-2" v-if="loading">{{ $t('loading') }}</h2>
         <h2 class="title is-2" v-else>{{ updatedDoughnutData.label }}</h2>
         <div class="columns">
           <div class="column">
-            <p class="title is-6">test</p>
-            <p class="subtitle is-4" v-if="loading">Loading...</p>
+            <p class="title is-6">{{ $t('value') }}</p>
+            <p class="subtitle is-4" v-if="loading">{{ $t('loading') }}</p>
             <p class="subtitle is-4" v-else>
               {{ updatedDoughnutData.todaysValue | numFormat('$0,0.00') }}
             </p>
           </div>
           <div class="column">
-            <p class="title is-6 has-text-right">test</p>
+            <p class="title is-6 has-text-right">{{ $t('gain') }}</p>
             <p class="subtitle is-4 has-text-right" v-if="loading">
-              Loading...
+              {{ $t('loading') }}
             </p>
             <p
               class="subtitle is-4 has-text-right"
@@ -39,9 +39,9 @@
             </p>
           </div>
           <div class="column">
-            <p class="title is-6 has-text-right">test</p>
+            <p class="title is-6 has-text-right">{{ $t('return') }}</p>
             <p class="subtitle is-4 has-text-right" v-if="loading">
-              Loading...
+              {{ $t('loading') }}
             </p>
             <p
               class="subtitle is-4 has-text-right"
@@ -57,7 +57,7 @@
           </div>
         </div>
         <div>
-          <p v-if="loading">Loading...</p>
+          <p v-if="loading">{{ $t('loading') }}</p>
           <LineChart
             v-else
             :chart-data="updatedDoughnutData.lineChartDataset"
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="section">
-        <h2 class="title is-2">Slices</h2>
+        <h2 class="title is-2">{{ $t('slices') }}</h2>
       </div>
     </div>
   </div>

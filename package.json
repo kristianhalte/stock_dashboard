@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
     "alphavantage": "^2.0.0",
@@ -20,6 +21,7 @@
     "vue": "^2.6.10",
     "vue-chartjs": "^3.5.0",
     "vue-filter-number-format": "^2.0.0",
+    "vue-i18n": "^8.0.0",
     "vue-router": "^3.1.3",
     "vuex": "^3.1.2"
   },
@@ -35,6 +37,7 @@
     "prettier": "^1.19.1",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-i18n": "^0.6.1",
     "vue-template-compiler": "^2.6.10"
   }
 }

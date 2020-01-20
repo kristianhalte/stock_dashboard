@@ -2,25 +2,25 @@
   <div class="columns">
     <div class="column">
       <div class="section">
-        <p class="subtitle is-4" v-if="loading">Loading...</p>
+        <p class="subtitle is-4" v-if="loading">{{ $t('loading') }}</p>
         <DoughnutChart v-else :chart-data="doughnutChartDataset" />
       </div>
     </div>
     <div class="column">
       <div class="section">
-        <h2 class="title is-2">Test</h2>
+        <h2 class="title is-2">{{ $t('myPortfolio') }}</h2>
         <div class="columns">
           <div class="column">
-            <p class="title is-6">Test</p>
-            <p class="subtitle is-4" v-if="loading">Loading...</p>
+            <p class="title is-6">{{ $t('value') }}</p>
+            <p class="subtitle is-4" v-if="loading">{{ $t('loading') }}</p>
             <p class="subtitle is-4" v-else>
               {{ todaysValue | numFormat('$0,0.00') }}
             </p>
           </div>
           <div class="column">
-            <p class="title is-6 has-text-right">Test</p>
+            <p class="title is-6 has-text-right">{{ $t('gain') }}</p>
             <p class="subtitle is-4 has-text-right" v-if="loading">
-              Loading...
+              {{ $t('loading') }}
             </p>
             <p
               class="subtitle is-4 has-text-right"
@@ -33,9 +33,9 @@
             </p>
           </div>
           <div class="column">
-            <p class="title is-6 has-text-right">Test</p>
+            <p class="title is-6 has-text-right">{{ $t('return') }}</p>
             <p class="subtitle is-4 has-text-right" v-if="loading">
-              Loading...
+              {{ $t('loading') }}
             </p>
             <p
               class="subtitle is-4 has-text-right"
@@ -49,12 +49,12 @@
           </div>
         </div>
         <div>
-          <p v-if="loading">Loading...</p>
+          <p v-if="loading">{{ $t('loading') }}</p>
           <LineChart v-else :chart-data="lineChartDataset" />
         </div>
       </div>
       <div class="section">
-        <h2 class="title is-2">Slices</h2>
+        <h2 class="title is-2">{{ $t('slices') }}</h2>
       </div>
       <b-table :data="data" :columns="columns" :striped="true">
         <template slot-scope="props">

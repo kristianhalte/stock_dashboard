@@ -1,0 +1,20 @@
+{
+  "loading": "Loading...",
+  "myPortfolio": "My Portfolio",
+  "value": "Value",
+  "gain": "Gain",
+  "return": "Return",
+  "slices": "Slices",
+  "name": "Name",
+  "actual": "Actual",
+  "target": "Target",
+  "type": "Type",
+  "date": "Date",
+  "ticker": "Ticker",
+  "quantity": "Quantity",
+  "price": "Price",
+  "fee": "Fee",
+  "currency": "Currency",
+  "home": "Home",
+  "transactions": "Transactions"
+}
