@@ -32,10 +32,11 @@ export default new Vuex.Store({
     //   state.doughnutData = state.doughnutsData[id]
     // },
     updatePortfolioDataArray(state, portfolioDataArray) {
-      state.computedData.portfolioDataArray = portfolioDataArray // TODO: remove
+      state.computedData.portfolioDataArray = portfolioDataArray
       state.myPortfolioData = getMyPortfolioData(
         portfolioDataArray,
-        doughnutsArray
+        doughnutsArray,
+        ordersArray
       )
       // state.doughnutsData = getMyDoughnutsData(
       //   portfolioDataArray,

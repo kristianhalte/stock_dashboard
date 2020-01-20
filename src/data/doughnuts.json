@@ -1,222 +1,222 @@
 {
   "doughnutsArray": [
     {
-      "name": "Real Estate",
-      "optimalVolume": 20,
+      "label": "Real Estate",
+      "target": 0.20,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 10
+          "label": "nflx",
+          "target": 0.10
         },
         {
-          "name": "aapl",
-          "optimalVolume": 20
+          "label": "aapl",
+          "target": 0.20
         },
         {
-          "name": "googl",
-          "optimalVolume": 40
+          "label": "googl",
+          "target": 0.40
         },
         {
-          "name": "amzn",
-          "optimalVolume": 30
+          "label": "amzn",
+          "target": 0.30
         }
       ]
     },
     {
-      "name": "Bonds",
-      "optimalVolume": 15,
+      "label": "Bonds",
+      "target": 0.15,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 40
+          "label": "nflx",
+          "target": 0.40
         },
         {
-          "name": "aapl",
-          "optimalVolume": 20
+          "label": "aapl",
+          "target": 0.20
         },
         {
-          "name": "googl",
-          "optimalVolume": 20
+          "label": "googl",
+          "target": 0.20
         },
         {
-          "name": "amzn",
-          "optimalVolume": 30
+          "label": "amzn",
+          "target": 0.30
         }
       ]
     },
     {
-      "name": "Finance",
-      "optimalVolume": 15,
+      "label": "Finance",
+      "target": 0.15,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 15
+          "label": "nflx",
+          "target": 0.15
         },
         {
-          "name": "aapl",
-          "optimalVolume": 25
+          "label": "aapl",
+          "target": 0.25
         },
         {
-          "name": "googl",
-          "optimalVolume": 35
+          "label": "googl",
+          "target": 0.35
         },
         {
-          "name": "amzn",
-          "optimalVolume": 25
+          "label": "amzn",
+          "target": 0.25
         }
       ]
     },
     {
-      "name": "Utilities",
-      "optimalVolume": 12,
+      "label": "Utilities",
+      "target": 0.12,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 14
+          "label": "nflx",
+          "target": 0.14
         },
         {
-          "name": "aapl",
-          "optimalVolume": 54
+          "label": "aapl",
+          "target": 0.54
         },
         {
-          "name": "googl",
-          "optimalVolume": 16
+          "label": "googl",
+          "target": 0.16
         },
         {
-          "name": "amzn",
-          "optimalVolume": 16
+          "label": "amzn",
+          "target": 0.16
         }
       ]
     },
     {
-      "name": "Health Care",
-      "optimalVolume": 8,
+      "label": "Health Care",
+      "target": 0.08,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 5
+          "label": "nflx",
+          "target": 0.05
         },
         {
-          "name": "aapl",
-          "optimalVolume": 30
+          "label": "aapl",
+          "target": 0.30
         },
         {
-          "name": "googl",
-          "optimalVolume": 40
+          "label": "googl",
+          "target": 0.40
         },
         {
-          "name": "amzn",
-          "optimalVolume": 25
+          "label": "amzn",
+          "target": 0.25
         }
       ]
     },
     {
-      "name": "Consumer",
-      "optimalVolume": 6,
+      "label": "Consumer",
+      "target": 0.06,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 5
+          "label": "nflx",
+          "target": 0.05
         },
         {
-          "name": "aapl",
-          "optimalVolume": 5
+          "label": "aapl",
+          "target": 0.05
         },
         {
-          "name": "googl",
-          "optimalVolume": 40
+          "label": "googl",
+          "target": 0.40
         },
         {
-          "name": "amzn",
-          "optimalVolume": 50
+          "label": "amzn",
+          "target": 0.50
         }
       ]
     },
     {
-      "name": "Telecom",
-      "optimalVolume": 4,
+      "label": "Telecom",
+      "target": 0.04,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 25
+          "label": "nflx",
+          "target": 0.25
         },
         {
-          "name": "aapl",
-          "optimalVolume": 25
+          "label": "aapl",
+          "target": 0.25
         },
         {
-          "name": "googl",
-          "optimalVolume": 25
+          "label": "googl",
+          "target": 0.25
         },
         {
-          "name": "amzn",
-          "optimalVolume": 25
+          "label": "amzn",
+          "target": 0.25
         }
       ]
     },
     {
-      "name": "Industrials",
-      "optimalVolume": 10,
+      "label": "Industrials",
+      "target": 0.10,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 20
+          "label": "nflx",
+          "target": 0.20
         },
         {
-          "name": "aapl",
-          "optimalVolume": 35
+          "label": "aapl",
+          "target": 0.35
         },
         {
-          "name": "googl",
-          "optimalVolume": 20
+          "label": "googl",
+          "target": 0.20
         },
         {
-          "name": "amzn",
-          "optimalVolume": 25
+          "label": "amzn",
+          "target": 0.25
         }
       ]
     },
     {
-      "name": "Tech",
-      "optimalVolume": 5,
+      "label": "Tech",
+      "target": 0.05,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 34
+          "label": "nflx",
+          "target": 0.34
         },
         {
-          "name": "aapl",
-          "optimalVolume": 4
+          "label": "aapl",
+          "target": 0.04
         },
         {
-          "name": "googl",
-          "optimalVolume": 60
+          "label": "googl",
+          "target": 0.60
         },
         {
-          "name": "amzn",
-          "optimalVolume": 2
+          "label": "amzn",
+          "target": 0.02
         }
       ]
     },
     {
-      "name": "Energy",
-      "optimalVolume": 5,
+      "label": "Energy",
+      "target": 0.05,
       "subDoughnutsArray": [
         {
-          "name": "nflx",
-          "optimalVolume": 23
+          "label": "nflx",
+          "target": 0.23
         },
         {
-          "name": "aapl",
-          "optimalVolume": 28
+          "label": "aapl",
+          "target": 0.28
         },
         {
-          "name": "googl",
-          "optimalVolume": 32
+          "label": "googl",
+          "target": 0.32
         },
         {
-          "name": "amzn",
-          "optimalVolume": 27
+          "label": "amzn",
+          "target": 0.27
         }
       ]
     }

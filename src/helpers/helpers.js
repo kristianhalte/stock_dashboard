@@ -273,10 +273,8 @@ const getSubPortfolioDataArray = (
   ordersArray
 ) => {
   const subPortfolioDataArray = []
-  let counter = 0
   portfolioDataArray.forEach(dateObject => {
-    const obj = {
-      counter: counter,
+    const dataObject = {
       date: dateObject.date,
       spend: getTotalSpendByDateAndDoughnutLabelFromOrdersArray(
         dateObject.date,
@@ -288,8 +286,7 @@ const getSubPortfolioDataArray = (
         dateObject.doughnutsDataArray[doughnutId].holdings
       ),
     }
-    subPortfolioDataArray.push(obj)
-    counter += 1
+    subPortfolioDataArray.push(dataObject)
   })
   return subPortfolioDataArray
 }
@@ -299,30 +296,21 @@ const getSubPortfolioDataArray = (
 /* -----===============================----- */
 
 // helper returning
-const getLabelsArrayFromDoughnutsArray = doughnutsArray => {
-  const labelsArray = []
-  doughnutsArray.forEach(dateObject => {
-    labelsArray.push(dateObject.name)
-  })
-  return labelsArray
-}
-
-// helper returning
 export const getDoughnutsLabelsArrayFromDoughnutsArray = doughnutsArray => {
   const doughnutsLabelsArray = []
-  doughnutsArray.forEach(dateObject => {
-    doughnutsLabelsArray.push(dateObject.name)
+  doughnutsArray.forEach(doughnutObject => {
+    doughnutsLabelsArray.push(doughnutObject.label)
   })
   return doughnutsLabelsArray
 }
 
 // helper returning
-const getOptimalVolumeArrayFromDoughnutsArray = doughnutsArray => {
-  const optimalVolumeArray = []
-  doughnutsArray.forEach(dateObject => {
-    optimalVolumeArray.push(dateObject.optimalVolume)
+const getDoughnutsTargetsArrayFromDoughnutsArray = doughnutsArray => {
+  const doughnutsTargetsArray = []
+  doughnutsArray.forEach(doughnutObject => {
+    doughnutsTargetsArray.push(doughnutObject.target)
   })
-  return optimalVolumeArray
+  return doughnutsTargetsArray
 }
 
 // helper returning
@@ -334,8 +322,8 @@ export const getDoughnutsDataArrayFromDoughnutsLabelsArray = (
 ) => {
   const doughnutsDataArray = []
   doughnutsLabelsArray.forEach(doughnutLabel => {
-    const obj = {
-      name: doughnutLabel,
+    const dataObject = {
+      label: doughnutLabel,
       holdings: getHoldingsOfDoughnutObjectByDateFromOrdersArray(
         doughnutLabel,
         date,
@@ -343,7 +331,7 @@ export const getDoughnutsDataArrayFromDoughnutsLabelsArray = (
         tickersArray
       ),
     }
-    doughnutsDataArray.push(obj)
+    doughnutsDataArray.push(dataObject)
   })
   return doughnutsDataArray
 }
@@ -353,15 +341,59 @@ export const getDoughnutsDataArrayFromDoughnutsLabelsArray = (
 /* -----===========================----- */
 
 // helper returning
-export const getMyPortfolioData = (portfolioDataArray, doughnutsArray) => {
+export const getMyPortfolioData = (
+  portfolioDataArray,
+  doughnutsArray,
+  ordersArray
+) => {
+  const todaysValue = getTodaysValue(portfolioDataArray)
   const myPortfolioData = {
-    todaysValue: getTodaysValue(portfolioDataArray),
+    todaysValue,
     todaysGain: getTodaysGain(portfolioDataArray),
     todaysReturn: getTodaysReturn(portfolioDataArray),
     doughnutChartDataset: getDoughnutChartDataset(doughnutsArray),
     lineChartDataset: getPortfolioLineChartDataset(portfolioDataArray),
+    tableData: getTableData(
+      portfolioDataArray,
+      doughnutsArray,
+      ordersArray,
+      todaysValue
+    ),
   }
   return myPortfolioData
+}
+
+// helper returning
+const getTableData = (
+  portfolioDataArray,
+  doughnutsArray,
+  ordersArray,
+  todaysValue
+) => {
+  const tableData = []
+  doughnutsArray.forEach((doughnutObject, doughnutId) => {
+    const doughnutLabel = doughnutObject.label
+    const doughnutTarget = doughnutObject.target
+    const subPortfolioDataArray = getSubPortfolioDataArray(
+      portfolioDataArray,
+      doughnutId,
+      doughnutLabel,
+      ordersArray
+    )
+    const todaysDoughnutValue = getTodaysValue(subPortfolioDataArray)
+    const todaysActual = todaysDoughnutValue / todaysValue
+    const dataObject = {
+      id: doughnutId,
+      label: doughnutLabel,
+      todaysValue: todaysDoughnutValue,
+      todaysGain: getTodaysGain(subPortfolioDataArray),
+      todaysReturn: getTodaysReturn(subPortfolioDataArray),
+      todaysActual: todaysActual,
+      target: doughnutTarget,
+    }
+    tableData.push(dataObject)
+  })
+  return tableData
 }
 
 // helper returning
@@ -370,17 +402,17 @@ export const getMyPortfolioData = (portfolioDataArray, doughnutsArray) => {
 //   doughnutsArray,
 //   ordersArray
 // ) => {
-//   const labelsArray = getLabelsArrayFromDoughnutsArray(doughnutsArray)
 //   const doughnutsData = []
-//   labelsArray.forEach((doughnutLabel, doughnutId) => {
+//   doughnutsArray.forEach((doughnutObject, doughnutId) => {
+//     const doughnutLabel = doughnutObject.label
 //     const subPortfolioDataArray = getSubPortfolioDataArray(
 //       portfolioDataArray,
 //       doughnutId,
 //       doughnutLabel,
 //       ordersArray
 //     )
-//     const obj = {
-//       label: doughnutId,
+//     const dataObject = {
+//       label: doughnutLabel,
 //       todaysValue: getTodaysValue(subPortfolioDataArray),
 //       todaysGain: getTodaysGain(subPortfolioDataArray),
 //       todaysReturn: getTodaysReturn(subPortfolioDataArray),
@@ -389,7 +421,7 @@ export const getMyPortfolioData = (portfolioDataArray, doughnutsArray) => {
 //       ),
 //       lineChartDataset: getPortfolioLineChartDataset(subPortfolioDataArray),
 //     }
-//     doughnutsData.push(obj)
+//     doughnutsData.push(dataObject)
 //   })
 //   return doughnutsData
 // }
@@ -401,8 +433,7 @@ export const getMyDoughnutData = (
   doughnutId,
   ordersArray
 ) => {
-  const labelsArray = getLabelsArrayFromDoughnutsArray(doughnutsArray)
-  const doughnutLabel = labelsArray[doughnutId]
+  const doughnutLabel = doughnutsArray[doughnutId].label
   const subPortfolioDataArray = getSubPortfolioDataArray(
     portfolioDataArray,
     doughnutId,
@@ -435,7 +466,7 @@ const getPortfolioLineChartDataset = portfolioDataArray => {
         label: 'Value',
         data: getDaysValueArrayFromPortfolioDataArray(portfolioDataArray),
         backgroundColor: 'rgba(0, 0, 0, 0.0)',
-        borderColor: borderColor[0],
+        borderColor: borderColor[5],
         borderWidth: 3,
       },
     ],
@@ -446,10 +477,10 @@ const getPortfolioLineChartDataset = portfolioDataArray => {
 // helper returning
 const getDoughnutChartDataset = doughnutsArray => {
   const chartData = {
-    labels: getLabelsArrayFromDoughnutsArray(doughnutsArray),
+    labels: getDoughnutsLabelsArrayFromDoughnutsArray(doughnutsArray),
     datasets: [
       {
-        data: getOptimalVolumeArrayFromDoughnutsArray(doughnutsArray),
+        data: getDoughnutsTargetsArrayFromDoughnutsArray(doughnutsArray),
         backgroundColor,
         borderColor,
         borderWidth,

@@ -8,36 +8,6 @@
         <b-navbar-item tag="router-link" :to="{ path: '/transactions' }">
           {{ $t('transactions') }}
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/0' }">
-          D 0
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/1' }">
-          D 1
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/2' }">
-          D 2
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/3' }">
-          D 3
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/4' }">
-          D 4
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/5' }">
-          D 5
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/6' }">
-          D 6
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/7' }">
-          D 7
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/8' }">
-          D 8
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/9' }">
-          D 9
-        </b-navbar-item>
       </template>
     </b-navbar>
     <section>
@@ -60,7 +30,7 @@ export default {
 @import '~bulma/sass/utilities/_all';
 
 // Set your colors
-$primary: #5ac7c1;
+$primary: rgba(91, 193, 190, 1);
 $primary-invert: findColorInvert($primary);
 $twitter: #4099ff;
 $twitter-invert: findColorInvert($twitter);

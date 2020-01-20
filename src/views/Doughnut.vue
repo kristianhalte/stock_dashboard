@@ -1,6 +1,6 @@
 <template>
   <div class="columns">
-    <div class="column">
+    <div class="column is-two-fifths">
       <div class="section">
         <p class="subtitle is-4" v-if="loading">{{ $t('loading') }}</p>
         <DoughnutChart
@@ -9,7 +9,7 @@
         />
       </div>
     </div>
-    <div class="column">
+    <div class="column is-three-fifths">
       <div class="section">
         <h2 class="title is-2" v-if="loading">{{ $t('loading') }}</h2>
         <h2 class="title is-2" v-else>{{ updatedDoughnutData.label }}</h2>
