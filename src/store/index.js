@@ -6,7 +6,7 @@ Vue.use(Vuex)
 import { ordersArray } from '@/data/orders'
 import { doughnutsArray } from '@/data/doughnuts.json'
 import { getPortfolioDataArrayFromOrdersArray } from '@/services/alpha'
-import { getMyPortfolioData, getMyDoughnutsData } from '@/helpers/helpers'
+import { getMyPortfolioData } from '@/helpers/helpers'
 
 export default new Vuex.Store({
   state: {
