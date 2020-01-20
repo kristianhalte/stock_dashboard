@@ -3,102 +3,222 @@
     {
       "name": "Real Estate",
       "optimalVolume": 20,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 10
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 20
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 40
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 30
+        }
+      ]
     },
     {
       "name": "Bonds",
       "optimalVolume": 15,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 40
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 20
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 20
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 30
+        }
+      ]
     },
     {
       "name": "Finance",
       "optimalVolume": 15,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 15
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 25
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 35
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 25
+        }
+      ]
     },
     {
       "name": "Utilities",
       "optimalVolume": 12,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 14
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 54
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 16
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 16
+        }
+      ]
     },
     {
       "name": "Health Care",
       "optimalVolume": 8,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 5
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 30
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 40
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 25
+        }
+      ]
     },
     {
       "name": "Consumer",
       "optimalVolume": 6,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 5
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 5
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 40
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 50
+        }
+      ]
     },
     {
       "name": "Telecom",
       "optimalVolume": 4,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 25
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 25
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 25
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 25
+        }
+      ]
     },
     {
       "name": "Industrials",
       "optimalVolume": 10,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 20
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 35
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 20
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 25
+        }
+      ]
     },
     {
       "name": "Tech",
       "optimalVolume": 5,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 34
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 4
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 60
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 2
+        }
+      ]
     },
     {
       "name": "Energy",
       "optimalVolume": 5,
-      "holdings": {
-        "nflx": 10,
-        "aapl": 20,
-        "googl": 40,
-        "amzn": 30
-      }
+      "subDoughnutsArray": [
+        {
+          "name": "nflx",
+          "optimalVolume": 23
+        },
+        {
+          "name": "aapl",
+          "optimalVolume": 28
+        },
+        {
+          "name": "googl",
+          "optimalVolume": 32
+        },
+        {
+          "name": "amzn",
+          "optimalVolume": 27
+        }
+      ]
     }
   ]
 }

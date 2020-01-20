@@ -6,8 +6,10 @@ import {
   getTodaysDate,
   getFirstOrderDateFromOrdersArray,
   getTickersArrayFromOrdersArray,
+  getDoughnutsArrayFromOrdersArray,
   getTotalSpendByDateFromOrdersArray,
   getQuantityOfStockByDateFromOrdersArray,
+  getDoughnutsDataArrayFromDoughnutsArray,
 } from '@/helpers/helpers'
 const apiKey = process.env.VUE_APP_ALPHA_VANTAGE_API_KEY
 
@@ -25,6 +27,7 @@ const getArrayOfTimeSeriesFromOrdersArray = async ordersArray => {
   const today = getTodaysDate()
   const endDate = getFirstOrderDateFromOrdersArray(ordersArray)
   const tickersArray = getTickersArrayFromOrdersArray(ordersArray)
+  const doughnutsArray = getDoughnutsArrayFromOrdersArray(ordersArray)
   let outputsize = 'compact'
   if (getDaysBetween(today, endDate) > 100) {
     outputsize = 'full'
@@ -50,6 +53,12 @@ const getArrayOfTimeSeriesFromOrdersArray = async ordersArray => {
                     ),
                   },
                 },
+                doughnutsDataArray: getDoughnutsDataArrayFromDoughnutsArray(
+                  doughnutsArray,
+                  date,
+                  ordersArray,
+                  tickersArray
+                ),
               }
               timeSeriesDataArrayForTicker.push(obj)
             }

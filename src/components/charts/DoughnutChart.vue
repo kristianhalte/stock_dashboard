@@ -1,9 +1,10 @@
 <script>
-import { Pie } from 'vue-chartjs'
+import { Pie, mixins } from 'vue-chartjs'
 export default {
   name: 'DoughnutChart',
+  mixins: [mixins.reactiveProp],
   props: {
-    chartdata: {
+    chartData: {
       type: Object,
       default: null,
     },
@@ -19,7 +20,7 @@ export default {
   }),
   extends: Pie,
   mounted() {
-    this.renderChart(this.chartdata, this.options)
+    this.renderChart(this.chartData, this.options)
   },
   methods: {
     handle(evt, item) {

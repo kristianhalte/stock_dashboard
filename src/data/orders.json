@@ -1,76 +1,84 @@
 {
   "ordersArray": [
     {
-      "type": "buy",
+      "type": "sell",
       "ticker": "nflx",
       "date": "2020-01-03",
-      "price": 339.07,
+      "price": 325.90,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 2
+      "quantity": 2,
+      "doughnut": "Real Estate"
     },
     {
       "type": "buy",
       "ticker": "aapl",
-      "date": "2020-01-05",
-      "price": 311.34,
+      "date": "2020-01-06",
+      "price": 299.80,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 2
+      "quantity": 2,
+      "doughnut": "Bonds"
     },
     {
       "type": "buy",
       "ticker": "amzn",
-      "date": "2020-01-01",
-      "price": 1862.02,
+      "date": "2020-01-02",
+      "price": 1898.01,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 1
+      "quantity": 1,
+      "doughnut": "Real Estate"
     },
     {
       "type": "buy",
       "ticker": "googl",
       "date": "2020-01-07",
-      "price": 1439.20,
+      "price": 1395.11,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 1
+      "quantity": 1,
+      "doughnut": "Real Estate"
     },
     {
       "type": "buy",
       "ticker": "nflx",
       "date": "2020-01-06",
-      "price": 329.07,
+      "price": 335.83,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 3
+      "quantity": 3,
+      "doughnut": "Real Estate"
     },
     {
       "type": "buy",
       "ticker": "aapl",
       "date": "2020-01-09",
-      "price": 301.34,
+      "price": 309.63,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 2
+      "quantity": 2,
+      "doughnut": "Real Estate"
     },
     {
       "type": "buy",
       "ticker": "amzn",
       "date": "2020-01-10",
-      "price": 1762.02,
+      "price": 1883.16,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 1
+      "quantity": 1,
+      "doughnut": "Bonds"
     },
     {
       "type": "buy",
       "ticker": "googl",
-      "date": "2020-01-12",
-      "price": 1339.20,
+      "date": "2020-01-13",
+      "price": 1440.03,
       "currency": "USD",
       "fee": 5.1,
-      "quantity": 2
+      "quantity": 2,
+      "doughnut": "Bonds"
     }
   ]
 }

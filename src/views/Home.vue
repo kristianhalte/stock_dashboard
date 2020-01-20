@@ -1,7 +1,7 @@
 <template>
   <div class="columns">
     <div class="column">
-      <DoughnutChart :chartdata="updatedDoughnutChartDataset" />
+      <DoughnutChart :chart-data="doughnutChartDataset" />
     </div>
     <div class="column">
       <h2 class="title is-2">My Portfolio</h2>
@@ -10,7 +10,7 @@
           <p class="title is-6">Value</p>
           <p class="subtitle is-4" v-if="loading">Loading...</p>
           <p class="subtitle is-4" v-else>
-            ${{ updatedTodaysValue | numFormat('0,0.00') }}
+            ${{ todaysValue | numFormat('0,0.00') }}
           </p>
         </div>
         <div class="column">
@@ -22,10 +22,10 @@
             class="subtitle is-4 has-text-right has-text-primary"
             v-else
             v-bind:class="[
-              updatedTodaysGain >= 0 ? 'has-text-primary' : 'has-text-danger',
+              todaysGain >= 0 ? 'has-text-primary' : 'has-text-danger',
             ]"
           >
-            +${{ updatedTodaysGain | numFormat('0,0.00') }}
+            +${{ todaysGain | numFormat('0,0.00') }}
           </p>
         </div>
         <div class="column">
@@ -37,16 +37,16 @@
             class="subtitle is-4 has-text-right has-text-primary"
             v-else
             v-bind:class="[
-              updatedTodaysReturn >= 0 ? 'has-text-primary' : 'has-text-danger',
+              todaysReturn >= 0 ? 'has-text-primary' : 'has-text-danger',
             ]"
           >
-            {{ updatedTodaysReturn | numFormat('0,0.00') }}%
+            {{ todaysReturn | numFormat('0,0.00') }}%
           </p>
         </div>
       </div>
       <div>
         <p v-if="loading">Loading...</p>
-        <LineChart v-else :chartdata="updatedPortfolioLineChartDataset" />
+        <LineChart v-else :chart-data="portfolioLineChartDataset" />
       </div>
     </div>
   </div>
@@ -55,14 +55,7 @@
 <script>
 import DoughnutChart from '@/components/charts/DoughnutChart.vue'
 import LineChart from '@/components/charts/LineChart.vue'
-import { doughnutsArray } from '@/data/doughnuts.json'
-import {
-  getPortfolioLineChartDataset,
-  getDoughnutChartDataset,
-  getTodaysValue,
-  getTodaysGain,
-  getTodaysReturn,
-} from '@/helpers/helpers'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'home',
@@ -71,30 +64,16 @@ export default {
     LineChart,
   },
   computed: {
-    // isTodaysGainPositive() {
-    //   return if(this.updatedTodaysGain >= 0)
-    // },
-    updatedTodaysValue() {
-      return getTodaysValue(this.portfolioDataArray)
-    },
-    updatedTodaysGain() {
-      return getTodaysGain(this.portfolioDataArray)
-    },
-    updatedTodaysReturn() {
-      return getTodaysReturn(this.portfolioDataArray)
-    },
-    updatedDoughnutChartDataset() {
-      return getDoughnutChartDataset(doughnutsArray)
-    },
-    updatedPortfolioLineChartDataset() {
-      return getPortfolioLineChartDataset(this.portfolioDataArray)
-    },
-    portfolioDataArray() {
-      return this.$store.state.portfolioDataArray
-    },
-    loading() {
-      return this.$store.state.loading
-    },
+    ...mapGetters([
+      'todaysValue',
+      'todaysGain',
+      'todaysReturn',
+      'doughnutChartDataset',
+      'portfolioLineChartDataset',
+    ]),
+    ...mapState({
+      loading: state => state.computedData.loading,
+    }),
   },
 }
 </script>

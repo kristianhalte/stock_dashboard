@@ -6,7 +6,13 @@
           Home
         </b-navbar-item>
         <b-navbar-item tag="router-link" :to="{ path: '/transactions' }">
-          Test
+          Transactions
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/0' }">
+          Doughnuts 0
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/doughnut/1' }">
+          Doughnuts 2
         </b-navbar-item>
       </template>
     </b-navbar>
