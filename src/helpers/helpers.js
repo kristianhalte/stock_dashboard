@@ -102,9 +102,28 @@ export const getTickersArrayFromOrdersArray = ordersArray => {
 
 // helper returning quantity of stocks held at given date based on an array of orders
 export const getTotalSpendByDateFromOrdersArray = (date, ordersArray) => {
-  let totalSpend = 8
+  let totalSpend = 0
   ordersArray.forEach(orderObject => {
     if (orderObject.date <= date) {
+      if (orderObject.type === 'buy') {
+        totalSpend += orderObject.quantity * orderObject.price
+      } else if (orderObject.type === 'sell') {
+        totalSpend -= orderObject.quantity * orderObject.price
+      }
+    }
+  })
+  return totalSpend
+}
+
+// helper returning quantity of stocks held at given date based on an array of orders
+export const getTotalSpendByDateAndDoughnutLabelFromOrdersArray = (
+  date,
+  ordersArray,
+  doughnutLabel
+) => {
+  let totalSpend = 0
+  ordersArray.forEach(orderObject => {
+    if (orderObject.date <= date && orderObject.doughnut === doughnutLabel) {
       if (orderObject.type === 'buy') {
         totalSpend += orderObject.quantity * orderObject.price
       } else if (orderObject.type === 'sell') {
@@ -210,12 +229,12 @@ const mergeHoldingsObjects = (holdingsObject1, holdingsObject2) => {
 }
 
 // helper returning
-const getDaysValueFromPortfolioDataArray = portfolioDataArray => {
-  const daysValue = []
+const getDaysValueArrayFromPortfolioDataArray = portfolioDataArray => {
+  const daysValueArray = []
   portfolioDataArray.forEach(dateObject => {
-    daysValue.unshift(getHoldingsObjectValue(dateObject.holdings))
+    daysValueArray.unshift(getHoldingsObjectValue(dateObject.holdings))
   })
-  return daysValue
+  return daysValueArray
 }
 
 // helper returning
@@ -228,33 +247,45 @@ const getTodaysValue = portfolioDataArray => {
 const getTodaysGain = portfolioDataArray => {
   let todaysGain = 0
   const todaysSpend = portfolioDataArray[0].spend
-  const todaysValue = getHoldingsObjectValue(portfolioDataArray[0].holdings)
+  const todaysValue = getTodaysValue(portfolioDataArray)
   todaysGain = todaysValue - todaysSpend
   return todaysGain
 }
 
 // helper returning
 const getTodaysReturn = portfolioDataArray => {
-  let todaysReturn = 8.24
+  let todaysReturn = 0
   const todaysSpend = portfolioDataArray[0].spend
-  const todaysValue = getHoldingsObjectValue(portfolioDataArray[0].holdings)
+  const todaysValue = getTodaysValue(portfolioDataArray)
   const todaysGain = todaysValue - todaysSpend
+  if (todaysSpend === 0) {
+    return todaysReturn
+  }
   todaysReturn = todaysGain / todaysSpend
   return todaysReturn
 }
 
 // helper returning
-const getSubPortfolioDataArray = (portfolioDataArray, id) => {
+const getSubPortfolioDataArray = (
+  portfolioDataArray,
+  doughnutId,
+  doughnutLabel,
+  ordersArray
+) => {
   const subPortfolioDataArray = []
   let counter = 0
   portfolioDataArray.forEach(dateObject => {
     const obj = {
       counter: counter,
       date: dateObject.date,
-      spend: 2000,
+      spend: getTotalSpendByDateAndDoughnutLabelFromOrdersArray(
+        dateObject.date,
+        ordersArray,
+        doughnutLabel
+      ),
       holdings: mergeHoldingsObjects(
         dateObject.holdings,
-        dateObject.doughnutsDataArray[id].holdings
+        dateObject.doughnutsDataArray[doughnutId].holdings
       ),
     }
     subPortfolioDataArray.push(obj)
@@ -334,59 +365,61 @@ export const getMyPortfolioData = (portfolioDataArray, doughnutsArray) => {
 }
 
 // helper returning
-export const getMyDoughnutsData = (portfolioDataArray, doughnutsArray) => {
-  const labelsArray = getLabelsArrayFromDoughnutsArray(doughnutsArray)
-  const doughnutsData = []
-  labelsArray.forEach((label, index) => {
-    const obj = {
-      label: label,
-      todaysValue: getTodaysValue(
-        getSubPortfolioDataArray(portfolioDataArray, index)
-      ),
-      todaysGain: getTodaysGain(
-        getSubPortfolioDataArray(portfolioDataArray, index)
-      ),
-      todaysReturn: getTodaysReturn(
-        getSubPortfolioDataArray(portfolioDataArray, index)
-      ),
-      doughnutChartDataset: getDoughnutChartDataset(
-        doughnutsArray[index].subDoughnutsArray
-      ),
-      lineChartDataset: getPortfolioLineChartDataset(
-        getSubPortfolioDataArray(portfolioDataArray, index)
-      ),
-    }
-    doughnutsData.push(obj)
-  })
-  return doughnutsData
-}
+// export const getMyDoughnutsData = (
+//   portfolioDataArray,
+//   doughnutsArray,
+//   ordersArray
+// ) => {
+//   const labelsArray = getLabelsArrayFromDoughnutsArray(doughnutsArray)
+//   const doughnutsData = []
+//   labelsArray.forEach((doughnutLabel, doughnutId) => {
+//     const subPortfolioDataArray = getSubPortfolioDataArray(
+//       portfolioDataArray,
+//       doughnutId,
+//       doughnutLabel,
+//       ordersArray
+//     )
+//     const obj = {
+//       label: doughnutId,
+//       todaysValue: getTodaysValue(subPortfolioDataArray),
+//       todaysGain: getTodaysGain(subPortfolioDataArray),
+//       todaysReturn: getTodaysReturn(subPortfolioDataArray),
+//       doughnutChartDataset: getDoughnutChartDataset(
+//         doughnutsArray[doughnutId].subDoughnutsArray
+//       ),
+//       lineChartDataset: getPortfolioLineChartDataset(subPortfolioDataArray),
+//     }
+//     doughnutsData.push(obj)
+//   })
+//   return doughnutsData
+// }
 
 // helper returning
 export const getMyDoughnutData = (
   portfolioDataArray,
   doughnutsArray,
-  labelId
+  doughnutId,
+  ordersArray
 ) => {
   const labelsArray = getLabelsArrayFromDoughnutsArray(doughnutsArray)
-  const doughnutData = {
-    label: labelsArray[labelId],
-    todaysValue: getTodaysValue(
-      getSubPortfolioDataArray(portfolioDataArray, labelId)
-    ),
-    todaysGain: getTodaysGain(
-      getSubPortfolioDataArray(portfolioDataArray, labelId)
-    ),
-    todaysReturn: getTodaysReturn(
-      getSubPortfolioDataArray(portfolioDataArray, labelId)
-    ),
+  const doughnutLabel = labelsArray[doughnutId]
+  const subPortfolioDataArray = getSubPortfolioDataArray(
+    portfolioDataArray,
+    doughnutId,
+    doughnutLabel,
+    ordersArray
+  )
+  const myDoughnutData = {
+    label: doughnutLabel,
+    todaysValue: getTodaysValue(subPortfolioDataArray),
+    todaysGain: getTodaysGain(subPortfolioDataArray),
+    todaysReturn: getTodaysReturn(subPortfolioDataArray),
     doughnutChartDataset: getDoughnutChartDataset(
-      doughnutsArray[labelId].subDoughnutsArray
+      doughnutsArray[doughnutId].subDoughnutsArray
     ),
-    lineChartDataset: getPortfolioLineChartDataset(
-      getSubPortfolioDataArray(portfolioDataArray, labelId)
-    ),
+    lineChartDataset: getPortfolioLineChartDataset(subPortfolioDataArray),
   }
-  return doughnutData
+  return myDoughnutData
 }
 
 /* -----===========================----- */
@@ -400,7 +433,7 @@ const getPortfolioLineChartDataset = portfolioDataArray => {
     datasets: [
       {
         label: 'Value',
-        data: getDaysValueFromPortfolioDataArray(portfolioDataArray),
+        data: getDaysValueArrayFromPortfolioDataArray(portfolioDataArray),
         backgroundColor: 'rgba(0, 0, 0, 0.0)',
         borderColor: borderColor[0],
         borderWidth: 3,

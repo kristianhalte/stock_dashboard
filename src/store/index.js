@@ -12,15 +12,15 @@ export default new Vuex.Store({
   state: {
     rawData: {
       doughnutsArray,
+      ordersArray,
     },
     computedData: {
       portfolioDataArray: null,
       loading: true,
     },
-    test: {},
+    // test: {},
     myPortfolioData: null,
-    doughnutsData: null,
-    doughnutData: null,
+    // doughnutsData: null,
   },
 
   getters: {
@@ -28,19 +28,20 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    updateDoughnutData(state, id) {
-      state.doughnutData = state.doughnutsData[id]
-    },
+    // updateDoughnutData(state, id) {
+    //   state.doughnutData = state.doughnutsData[id]
+    // },
     updatePortfolioDataArray(state, portfolioDataArray) {
       state.computedData.portfolioDataArray = portfolioDataArray // TODO: remove
       state.myPortfolioData = getMyPortfolioData(
         portfolioDataArray,
         doughnutsArray
       )
-      state.doughnutsData = getMyDoughnutsData(
-        portfolioDataArray,
-        doughnutsArray
-      )
+      // state.doughnutsData = getMyDoughnutsData(
+      //   portfolioDataArray,
+      //   doughnutsArray,
+      //   ordersArray
+      // )
     },
     changeLoadingState(state, loading) {
       state.computedData.loading = loading
