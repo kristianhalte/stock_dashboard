@@ -40,7 +40,7 @@
         </b-navbar-item>
       </template>
     </b-navbar>
-    <section class="section">
+    <section>
       <router-view />
     </section>
   </div>

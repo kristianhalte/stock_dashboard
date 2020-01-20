@@ -15,7 +15,7 @@
           <p class="title is-6">test</p>
           <p class="subtitle is-4" v-if="loading">Loading...</p>
           <p class="subtitle is-4" v-else>
-            ${{ updatedDoughnutData.todaysValue | numFormat('0,0.00') }}
+            {{ updatedDoughnutData.todaysValue | numFormat('$0,0.00') }}
           </p>
         </div>
         <div class="column">
@@ -24,7 +24,7 @@
             Loading...
           </p>
           <p
-            class="subtitle is-4 has-text-right has-text-primary"
+            class="subtitle is-4 has-text-right"
             v-else
             v-bind:class="[
               updatedDoughnutData.todaysGain >= 0
@@ -32,7 +32,7 @@
                 : 'has-text-danger',
             ]"
           >
-            +${{ updatedDoughnutData.todaysGain | numFormat('0,0.00') }}
+            {{ updatedDoughnutData.todaysGain | numFormat('+$-0,0.00') }}
           </p>
         </div>
         <div class="column">
@@ -41,7 +41,7 @@
             Loading...
           </p>
           <p
-            class="subtitle is-4 has-text-right has-text-primary"
+            class="subtitle is-4 has-text-right"
             v-else
             v-bind:class="[
               updatedDoughnutData.todaysReturn >= 0
@@ -49,7 +49,7 @@
                 : 'has-text-danger',
             ]"
           >
-            {{ updatedDoughnutData.todaysReturn | numFormat('0,0.00') }}%
+            {{ updatedDoughnutData.todaysReturn | numFormat('+0,0.00%') }}
           </p>
         </div>
       </div>

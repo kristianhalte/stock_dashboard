@@ -239,7 +239,7 @@ const getTodaysReturn = portfolioDataArray => {
   const todaysSpend = portfolioDataArray[0].spend
   const todaysValue = getHoldingsObjectValue(portfolioDataArray[0].holdings)
   const todaysGain = todaysValue - todaysSpend
-  todaysReturn = (todaysGain / todaysSpend) * 100
+  todaysReturn = todaysGain / todaysSpend
   return todaysReturn
 }
 
