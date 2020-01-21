@@ -46,11 +46,11 @@ export const getDaysBetween = (fromDate, toDate) => {
 // helper returning the date of the first order in an array of orders
 export const getFirstOrderDateFromOrdersArray = ordersArray => {
   let firstOrderDate = getTodaysDate()
-  for (const order of ordersArray) {
-    if (order.date < firstOrderDate) {
-      firstOrderDate = order.date
+  ordersArray.forEach(orderObject => {
+    if (orderObject.date < firstOrderDate) {
+      firstOrderDate = orderObject.date
     }
-  }
+  })
   return firstOrderDate
 }
 
@@ -77,11 +77,11 @@ export const getFirstOrderDateFromOrdersArray = ordersArray => {
 // helper returning an array of tickers from an array of orders
 export const getTickersArrayFromOrdersArray = ordersArray => {
   const tickersArray = []
-  for (const orderObject of ordersArray) {
+  ordersArray.forEach(orderObject => {
     if (!isValueInArray(orderObject.ticker, tickersArray)) {
       tickersArray.push(orderObject.ticker)
     }
-  }
+  })
   return tickersArray
 }
 
