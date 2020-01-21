@@ -106,9 +106,9 @@ export const getTotalSpendByDateFromOrdersArray = (date, ordersArray) => {
   ordersArray.forEach(orderObject => {
     if (orderObject.date <= date) {
       if (orderObject.type === 'buy') {
-        totalSpend += orderObject.quantity * orderObject.price
+        totalSpend += orderObject.quantity * orderObject.price + orderObject.fee
       } else if (orderObject.type === 'sell') {
-        totalSpend -= orderObject.quantity * orderObject.price
+        totalSpend -= orderObject.quantity * orderObject.price - orderObject.fee
       }
     }
   })
@@ -125,9 +125,9 @@ export const getTotalSpendByDateAndDoughnutLabelFromOrdersArray = (
   ordersArray.forEach(orderObject => {
     if (orderObject.date <= date && orderObject.doughnut === doughnutLabel) {
       if (orderObject.type === 'buy') {
-        totalSpend += orderObject.quantity * orderObject.price
+        totalSpend += orderObject.quantity * orderObject.price + orderObject.fee
       } else if (orderObject.type === 'sell') {
-        totalSpend -= orderObject.quantity * orderObject.price
+        totalSpend -= orderObject.quantity * orderObject.price - orderObject.fee
       }
     }
   })
