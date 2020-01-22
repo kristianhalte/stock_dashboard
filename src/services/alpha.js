@@ -8,6 +8,7 @@ import {
   getFirstOrderDateFromOrdersArray,
   getTickersArrayFromOrdersArray,
   getTotalSpendByDateFromOrdersArray,
+  getTotalDividendByDateFromOrdersArray,
   getQuantityOfStockByDateFromOrdersArray,
   getDoughnutsDataArrayFromDoughnutsLabelsArray,
   getDoughnutsLabelsArrayFromDoughnutsArray,
@@ -46,6 +47,10 @@ const getArrayOfTimeSeriesFromOrdersArray = async ordersArray => {
               const obj = {
                 date: date,
                 spend: getTotalSpendByDateFromOrdersArray(date, ordersArray),
+                dividend: getTotalDividendByDateFromOrdersArray(
+                  date,
+                  ordersArray
+                ),
                 holdings: {
                   [ticker]: {
                     close: value['4. close'],

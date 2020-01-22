@@ -116,6 +116,19 @@ export const getTotalSpendByDateFromOrdersArray = (date, ordersArray) => {
 }
 
 // helper returning quantity of stocks held at given date based on an array of orders
+export const getTotalDividendByDateFromOrdersArray = (date, ordersArray) => {
+  let totalDividend = 0
+  ordersArray.forEach(orderObject => {
+    if (orderObject.date <= date) {
+      if (orderObject.type === 'dividend') {
+        totalDividend += orderObject.quantity * orderObject.price
+      }
+    }
+  })
+  return totalDividend
+}
+
+// helper returning quantity of stocks held at given date based on an array of orders
 export const getTotalSpendByDateAndDoughnutLabelFromOrdersArray = (
   date,
   ordersArray,
@@ -253,15 +266,22 @@ const getTodaysGain = portfolioDataArray => {
 }
 
 // helper returning
+const getTodaysDividend = portfolioDataArray => {
+  const todaysDividend = portfolioDataArray[0].dividend
+  return todaysDividend
+}
+
+// helper returning
 const getTodaysReturn = portfolioDataArray => {
   let todaysReturn = 0
   const todaysSpend = portfolioDataArray[0].spend
   const todaysValue = getTodaysValue(portfolioDataArray)
   const todaysGain = todaysValue - todaysSpend
+  const todaysDividend = getTodaysDividend(portfolioDataArray)
   if (todaysSpend === 0) {
     return todaysReturn
   }
-  todaysReturn = todaysGain / todaysSpend
+  todaysReturn = (todaysGain + todaysDividend) / todaysSpend
   return todaysReturn
 }
 
@@ -350,6 +370,7 @@ export const getMyPortfolioData = (
   const myPortfolioData = {
     todaysValue,
     todaysGain: getTodaysGain(portfolioDataArray),
+    todaysDividend: getTodaysDividend(portfolioDataArray),
     todaysReturn: getTodaysReturn(portfolioDataArray),
     doughnutChartDataset: getDoughnutChartDataset(doughnutsArray),
     lineChartDataset: getPortfolioLineChartDataset(portfolioDataArray),

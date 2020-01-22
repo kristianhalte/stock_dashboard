@@ -359,6 +359,26 @@
       "fee": 3.0,
       "quantity": 1,
       "doughnut": "Health Care"
+    },
+    {
+      "type": "dividend",
+      "ticker": "googl",
+      "date": "2020-01-20",
+      "price": 40.00,
+      "currency": "usd",
+      "fee": 0,
+      "quantity": 1,
+      "doughnut": "Health Care"
+    },
+    {
+      "type": "dividend",
+      "ticker": "googl",
+      "date": "2020-01-20",
+      "price": 40.00,
+      "currency": "usd",
+      "fee": 0,
+      "quantity": 1,
+      "doughnut": "Energy"
     }
   ]
 }
