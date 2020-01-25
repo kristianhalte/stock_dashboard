@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Doughnuts from '../views/Doughnuts.vue'
+import TestStates from '../views/TestStates.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,12 @@ const routes = [
     path: '/doughnuts/:id',
     name: 'doughnuts',
     component: Doughnuts,
+  },
+  {
+    path: '/teststates/:id',
+    name: 'teststates',
+    component: TestStates,
+    props: true,
   },
 ]
 
