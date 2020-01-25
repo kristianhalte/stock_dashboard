@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     goToDoughnut(item) {
-      this.$router.push({ path: `/doughnut/${item.id}` })
+      this.$router.push({ path: `/doughnuts/${item.id}` })
     },
   },
   data() {

@@ -78,7 +78,7 @@ import { mapState } from 'vuex'
 import { getMyDoughnutData } from '@/helpers/helpers'
 
 export default {
-  name: 'doughnut',
+  name: 'doughnuts',
   components: {
     DoughnutChart,
     LineChart,

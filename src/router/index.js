@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Doughnut from '../views/Doughnut.vue'
+import Doughnuts from '../views/Doughnuts.vue'
 
 Vue.use(VueRouter)
 
@@ -21,9 +21,9 @@ const routes = [
       import(/* webpackChunkName: "about" */ '../views/Transactions.vue'),
   },
   {
-    path: '/doughnut/:id',
-    name: 'doughnut',
-    component: Doughnut,
+    path: '/doughnuts/:id',
+    name: 'doughnuts',
+    component: Doughnuts,
   },
 ]
 
