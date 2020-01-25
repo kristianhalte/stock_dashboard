@@ -22,12 +22,12 @@ export default {
   mounted() {
     this.renderChart(this.chartData, this.options)
   },
-  methods: {
-    handle(evt, item) {
-      console.log('legend onClick', evt)
-      console.log('legd item', item)
-      this.$router.push({ path: `/doughnut/${item._index}` })
-    },
-  },
+  // methods: {
+  //   handle(evt, item) {
+  //     console.log('legend onClick', evt)
+  //     console.log('legd item', item)
+  //     this.$router.push({ path: `/doughnut/${item._index}` })
+  //   },
+  // },
 }
 </script>
