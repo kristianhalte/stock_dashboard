@@ -25,6 +25,7 @@ const routes = [
     path: '/doughnuts/:id',
     name: 'doughnuts',
     component: Doughnuts,
+    props: true,
   },
   {
     path: '/teststates/:id',

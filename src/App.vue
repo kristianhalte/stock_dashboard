@@ -20,7 +20,8 @@
 export default {
   name: 'app',
   created() {
-    this.$store.dispatch('loadPortfolioData')
+    // this.$store.dispatch('loadPortfolioData')
+    this.$store.dispatch('loadAlphaData')
   },
 }
 </script>

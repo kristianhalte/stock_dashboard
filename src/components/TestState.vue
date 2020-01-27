@@ -3,32 +3,27 @@
     <br />
     <p>Compoent ID: {{ id }}</p>
     <div>
-      <vuefusioncharts
+      <fusioncharts
         :type="type"
         :width="width"
         :height="height"
         :dataFormat="dataFormat"
         :dataSource="testDataSource"
       >
-      </vuefusioncharts>
+      </fusioncharts>
     </div>
   </div>
 </template>
 
 <script>
-import vuefusioncharts from '@/components/charts/VueFusionCharts.vue'
-
 export default {
   name: 'TestState',
   props: ['id'],
-  components: {
-    vuefusioncharts,
-  },
   data() {
     return {
-      type: 'column2d',
+      type: 'doughnut2d',
       width: '550',
-      height: '350',
+      height: '450',
       dataFormat: 'json',
     }
   },
@@ -36,14 +31,31 @@ export default {
     testDataSource() {
       const testDataSource = {
         chart: {
-          caption: 'Countries With Most Oil Reserves [2017-18]',
-          subcaption: 'In MMbbl = One Million barrels',
-          xaxisname: 'Country',
-          yaxisname: 'Reserves (MMbbl)',
-          numbersuffix: 'K',
+          // Functional Attribues
+          showLabels: 0,
+          showValues: 0,
+          showPercentValues: 0,
+          showPercentInTooltip: 0,
           theme: 'fusion',
+          // Pie / Doughnut Properties
+          pieRadius: '90%',
+          doughnutRadius: '60%',
+          startingAngle: 0,
+          enableSlicing: 0,
+          slicingDistance: 0,
+          enableRotation: 0,
+          enableMultiSlicing: 0,
+          // Smart Labels & Lines
+          enableSmartLabels: 0,
+          // Legend Properties
+          showLegend: 0,
+          // Center Label Cosmetics
+          defaultCenterLabel: 'Portfolio $5,000',
+          centerLabel: 'Revenue from $label: $value',
+          // Number Formatting
+          decimals: 0,
         },
-        data: this.$store.getters.testChartData(this.id),
+        data: this.$store.getters.getMyDoughnutData(this.id),
       }
       return testDataSource
     },

@@ -115,14 +115,31 @@ export const getTotalSpendByDateFromOrdersArray = (date, ordersArray) => {
   return totalSpend
 }
 
-// helper returning quantity of stocks held at given date based on an array of orders
+// helper returning
 export const getTotalDividendByDateFromOrdersArray = (date, ordersArray) => {
   let totalDividend = 0
   ordersArray.forEach(orderObject => {
-    if (orderObject.date <= date) {
-      if (orderObject.type === 'dividend') {
-        totalDividend += orderObject.quantity * orderObject.price
-      }
+    if (orderObject.date <= date && orderObject.type === 'dividend') {
+      totalDividend += orderObject.quantity * orderObject.price
+    }
+  })
+  return totalDividend
+}
+
+// helper returning
+export const getTotalDividendByDateAndDoughnutLabelFromOrdersArray = (
+  date,
+  doughnutLabel,
+  ordersArray
+) => {
+  let totalDividend = 0
+  ordersArray.forEach(orderObject => {
+    if (
+      orderObject.date <= date &&
+      orderObject.type === 'dividend' &&
+      orderObject.doughnut === doughnutLabel
+    ) {
+      totalDividend += orderObject.quantity * orderObject.price
     }
   })
   return totalDividend
@@ -131,8 +148,8 @@ export const getTotalDividendByDateFromOrdersArray = (date, ordersArray) => {
 // helper returning quantity of stocks held at given date based on an array of orders
 export const getTotalSpendByDateAndDoughnutLabelFromOrdersArray = (
   date,
-  ordersArray,
-  doughnutLabel
+  doughnutLabel,
+  ordersArray
 ) => {
   let totalSpend = 0
   ordersArray.forEach(orderObject => {
@@ -167,8 +184,8 @@ export const getQuantityOfStockByDateFromOrdersArray = (
 }
 
 // helper returning
-const getQuantityOfStockByDateAndDoughnutFromOrdersArray = (
-  doughnutName,
+export const getQuantityOfStockByDateAndDoughnutLabelFromOrdersArray = (
+  doughnutLabel,
   ticker,
   date,
   ordersArray
@@ -177,7 +194,7 @@ const getQuantityOfStockByDateAndDoughnutFromOrdersArray = (
   ordersArray.forEach(orderObject => {
     if (
       orderObject.ticker === ticker &&
-      orderObject.doughnut === doughnutName &&
+      orderObject.doughnut === doughnutLabel &&
       orderObject.date <= date
     ) {
       if (orderObject.type === 'buy') {
@@ -192,7 +209,7 @@ const getQuantityOfStockByDateAndDoughnutFromOrdersArray = (
 
 // helper returning
 const getHoldingsOfDoughnutObjectByDateFromOrdersArray = (
-  doughnutName,
+  doughnutLabel,
   date,
   ordersArray,
   tickersArray
@@ -201,8 +218,8 @@ const getHoldingsOfDoughnutObjectByDateFromOrdersArray = (
   tickersArray.forEach(ticker => {
     const holding = {
       [ticker]: {
-        quantity: getQuantityOfStockByDateAndDoughnutFromOrdersArray(
-          doughnutName,
+        quantity: getQuantityOfStockByDateAndDoughnutLabelFromOrdersArray(
+          doughnutLabel,
           ticker,
           date,
           ordersArray
@@ -224,7 +241,7 @@ const getLabelsArrayFromPortfolioDataArray = portfolioDataArray => {
 }
 
 // helper returning
-const getHoldingsObjectValue = holdingsObject => {
+export const getValueFromHoldingsObject = holdingsObject => {
   let holdingValue = 0
   for (const [, value] of Object.entries(holdingsObject)) {
     holdingValue += value.close * value.quantity
@@ -245,14 +262,14 @@ const mergeHoldingsObjects = (holdingsObject1, holdingsObject2) => {
 const getDaysValueArrayFromPortfolioDataArray = portfolioDataArray => {
   const daysValueArray = []
   portfolioDataArray.forEach(dateObject => {
-    daysValueArray.unshift(getHoldingsObjectValue(dateObject.holdings))
+    daysValueArray.unshift(getValueFromHoldingsObject(dateObject.holdings))
   })
   return daysValueArray
 }
 
 // helper returning
 const getTodaysValue = portfolioDataArray => {
-  const todaysValue = getHoldingsObjectValue(portfolioDataArray[0].holdings)
+  const todaysValue = getValueFromHoldingsObject(portfolioDataArray[0].holdings)
   return todaysValue
 }
 
@@ -272,15 +289,21 @@ const getTodaysDividend = portfolioDataArray => {
 }
 
 // helper returning
+const getSubTodaysDividend = portfolioDataArray => {
+  const todaysDividend = portfolioDataArray[0].dividend
+  return todaysDividend
+}
+
+// helper returning
 const getTodaysReturn = portfolioDataArray => {
   let todaysReturn = 0
   const todaysSpend = portfolioDataArray[0].spend
-  const todaysValue = getTodaysValue(portfolioDataArray)
-  const todaysGain = todaysValue - todaysSpend
-  const todaysDividend = getTodaysDividend(portfolioDataArray)
+
   if (todaysSpend === 0) {
     return todaysReturn
   }
+  const todaysGain = getTodaysGain(portfolioDataArray)
+  const todaysDividend = getSubTodaysDividend(portfolioDataArray)
   todaysReturn = (todaysGain + todaysDividend) / todaysSpend
   return todaysReturn
 }
@@ -298,12 +321,17 @@ const getSubPortfolioDataArray = (
       date: dateObject.date,
       spend: getTotalSpendByDateAndDoughnutLabelFromOrdersArray(
         dateObject.date,
-        ordersArray,
-        doughnutLabel
+        doughnutLabel,
+        ordersArray
       ),
       holdings: mergeHoldingsObjects(
         dateObject.holdings,
         dateObject.doughnutsDataArray[doughnutId].holdings
+      ),
+      dividend: getTotalDividendByDateAndDoughnutLabelFromOrdersArray(
+        dateObject.date,
+        doughnutLabel,
+        ordersArray
       ),
     }
     subPortfolioDataArray.push(dataObject)
@@ -418,34 +446,34 @@ const getTableData = (
 }
 
 // helper returning
-// export const getMyDoughnutsData = (
-//   portfolioDataArray,
-//   doughnutsArray,
-//   ordersArray
-// ) => {
-//   const doughnutsData = []
-//   doughnutsArray.forEach((doughnutObject, doughnutId) => {
-//     const doughnutLabel = doughnutObject.label
-//     const subPortfolioDataArray = getSubPortfolioDataArray(
-//       portfolioDataArray,
-//       doughnutId,
-//       doughnutLabel,
-//       ordersArray
-//     )
-//     const dataObject = {
-//       label: doughnutLabel,
-//       todaysValue: getTodaysValue(subPortfolioDataArray),
-//       todaysGain: getTodaysGain(subPortfolioDataArray),
-//       todaysReturn: getTodaysReturn(subPortfolioDataArray),
-//       doughnutChartDataset: getDoughnutChartDataset(
-//         doughnutsArray[doughnutId].subDoughnutsArray
-//       ),
-//       lineChartDataset: getPortfolioLineChartDataset(subPortfolioDataArray),
-//     }
-//     doughnutsData.push(dataObject)
-//   })
-//   return doughnutsData
-// }
+export const getMyDoughnutsData = (
+  portfolioDataArray,
+  doughnutsArray,
+  ordersArray
+) => {
+  const doughnutsData = []
+  doughnutsArray.forEach((doughnutObject, doughnutId) => {
+    const doughnutLabel = doughnutObject.label
+    const subPortfolioDataArray = getSubPortfolioDataArray(
+      portfolioDataArray,
+      doughnutId,
+      doughnutLabel,
+      ordersArray
+    )
+    const dataObject = {
+      label: doughnutLabel,
+      todaysValue: getTodaysValue(subPortfolioDataArray),
+      todaysGain: getTodaysGain(subPortfolioDataArray),
+      todaysReturn: getTodaysReturn(subPortfolioDataArray),
+      doughnutChartDataset: getDoughnutChartDataset(
+        doughnutsArray[doughnutId].subDoughnutsArray
+      ),
+      lineChartDataset: getPortfolioLineChartDataset(subPortfolioDataArray),
+    }
+    doughnutsData.push(dataObject)
+  })
+  return doughnutsData
+}
 
 // helper returning
 export const getMyDoughnutData = (
