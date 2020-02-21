@@ -10,7 +10,9 @@ export default new Vuex.Store({
     loading: true,
   },
 
-  getters: {},
+  getters: {
+    getData: state => id => state.data[id],
+  },
 
   mutations: {
     // updateDoughnutData(state, id) {

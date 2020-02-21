@@ -5,8 +5,8 @@
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
           {{ $t('home') }}
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/transactions' }">
-          {{ $t('transactions') }}
+        <b-navbar-item tag="router-link" :to="{ path: '/portfolios/0' }">
+          {{ $t('portfolios') }}
         </b-navbar-item>
       </template>
     </b-navbar>
@@ -20,7 +20,6 @@
 export default {
   name: 'app',
   created() {
-    // this.$store.dispatch('loadPortfolioData')
     this.$store.dispatch('loadData')
   },
 }

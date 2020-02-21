@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Transactions from '../views/Transactions.vue'
+import Portfolios from '../views/Portfolios.vue'
 
 Vue.use(VueRouter)
 
@@ -12,9 +12,10 @@ const routes = [
     component: Home,
   },
   {
-    path: '/transactions',
-    name: 't',
-    component: Transactions,
+    path: '/portfolios/:id',
+    name: 'portfolios',
+    component: Portfolios,
+    props: true,
   },
 ]
 

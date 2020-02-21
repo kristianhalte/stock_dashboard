@@ -13,20 +13,44 @@
     </div>
     <div class="section">
       <p class="subtitle is-4" v-if="loading">{{ $t('loading') }}</p>
-      <p class="subtitle is-4" v-else>Done Loading</p>
+      <div v-else>
+        <p class="subtitle is-4">Done Loading {{ id }}</p>
+        <Deep :data="data" />
+        <Doughnut
+          :data="data.chart"
+          :label="doughnutLabel"
+          :todaysValue="doughnutTodaysValue"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Deep from '@/components/Deep.vue'
+import Doughnut from '@/components/charts/Doughnut.vue'
 import { mapState } from 'vuex'
 export default {
-  name: 'home',
+  name: 'portfolios',
+  components: {
+    Deep,
+    Doughnut,
+  },
+  props: ['id'],
+  data() {
+    return {
+      doughnutLabel: 'Hello Doughnut',
+      doughnutTodaysValue: 500,
+    }
+  },
   computed: {
     ...mapState({
       loading: state => state.loading,
-      data: state => state.data,
+      // data: state => state.data,
     }),
+    data() {
+      return this.$store.getters.getData(this.id)
+    },
   },
 }
 </script>
