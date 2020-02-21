@@ -3,7 +3,12 @@
     <div class="column is-two-fifths">
       <div class="section">
         <p class="subtitle is-4" v-if="loading">{{ $t('loading') }}</p>
-        <Doughnut v-else :data="doughnutDoughnutData" />
+        <Doughnut
+          v-else
+          :data="doughnutDoughnutData"
+          :label="doughnutLabel"
+          :todaysValue="doughnutTodaysValue"
+        />
       </div>
     </div>
     <div class="column is-three-fifths">
@@ -51,6 +56,21 @@ export default {
     Dashboard,
     NewLine,
     Slices,
+  },
+  created() {
+    this.$store.watch(
+      (state, getters) => getters.getDoughnutDoughnutData,
+      (newValue, oldValue) => {
+        console.log(`Updating from ${oldValue} to ${newValue}`)
+
+        // Do whatever makes sense now
+        // if (newValue === 'success') {
+        //   this.complex = {
+        //     deep: 'some deep object',
+        //   }
+        // }
+      }
+    )
   },
   computed: {
     ...mapState({

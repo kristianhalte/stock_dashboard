@@ -10,12 +10,42 @@
         <div class="level-item">
           <div>
             <div class="buttons is-marginless">
-              <button class="button is-rounded">1D</button>
-              <button class="button is-rounded">1W</button>
-              <button class="button is-rounded">1M</button>
-              <button class="button is-rounded">1Q</button>
-              <button class="button is-rounded">1Y</button>
-              <button class="button is-rounded is-primary">All</button>
+              <button
+                class="button is-rounded"
+                @click="$router.push('/doughnuts/0')"
+              >
+                1D
+              </button>
+              <button
+                class="button is-rounded"
+                @click="$router.push('/doughnuts/1')"
+              >
+                1W
+              </button>
+              <button
+                class="button is-rounded"
+                @click="$router.push('/doughnuts/2')"
+              >
+                1M
+              </button>
+              <button
+                class="button is-rounded"
+                @click="$router.push('/doughnuts/3')"
+              >
+                1Q
+              </button>
+              <button
+                class="button is-rounded"
+                @click="$router.push('/doughnuts/4')"
+              >
+                1Y
+              </button>
+              <button
+                class="button is-rounded is-primary"
+                @click="$router.push('/doughnuts/5')"
+              >
+                All
+              </button>
             </div>
             <p class="has-text-right has-text-grey">
               Performance since Jan 01, 2020

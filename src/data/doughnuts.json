@@ -2,221 +2,221 @@
   "doughnutsArray": [
     {
       "label": "Real Estate",
-      "target": 0.20,
+      "value": 0.20,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.10
+          "value": 0.10
         },
         {
           "label": "aapl",
-          "target": 0.20
+          "value": 0.20
         },
         {
           "label": "googl",
-          "target": 0.40
+          "value": 0.40
         },
         {
           "label": "amzn",
-          "target": 0.30
+          "value": 0.30
         }
       ]
     },
     {
       "label": "Bonds",
-      "target": 0.15,
+      "value": 0.15,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.40
+          "value": 0.40
         },
         {
           "label": "aapl",
-          "target": 0.20
+          "value": 0.20
         },
         {
           "label": "googl",
-          "target": 0.20
+          "value": 0.20
         },
         {
           "label": "amzn",
-          "target": 0.30
+          "value": 0.30
         }
       ]
     },
     {
       "label": "Finance",
-      "target": 0.15,
+      "value": 0.15,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.15
+          "value": 0.15
         },
         {
           "label": "aapl",
-          "target": 0.25
+          "value": 0.25
         },
         {
           "label": "googl",
-          "target": 0.35
+          "value": 0.35
         },
         {
           "label": "amzn",
-          "target": 0.25
+          "value": 0.25
         }
       ]
     },
     {
       "label": "Utilities",
-      "target": 0.12,
+      "value": 0.12,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.14
+          "value": 0.14
         },
         {
           "label": "aapl",
-          "target": 0.54
+          "value": 0.54
         },
         {
           "label": "googl",
-          "target": 0.16
+          "value": 0.16
         },
         {
           "label": "amzn",
-          "target": 0.16
+          "value": 0.16
         }
       ]
     },
     {
       "label": "Health Care",
-      "target": 0.08,
+      "value": 0.08,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.05
+          "value": 0.05
         },
         {
           "label": "aapl",
-          "target": 0.30
+          "value": 0.30
         },
         {
           "label": "googl",
-          "target": 0.40
+          "value": 0.40
         },
         {
           "label": "amzn",
-          "target": 0.25
+          "value": 0.25
         }
       ]
     },
     {
       "label": "Consumer",
-      "target": 0.06,
+      "value": 0.06,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.05
+          "value": 0.05
         },
         {
           "label": "aapl",
-          "target": 0.05
+          "value": 0.05
         },
         {
           "label": "googl",
-          "target": 0.40
+          "value": 0.40
         },
         {
           "label": "amzn",
-          "target": 0.50
+          "value": 0.50
         }
       ]
     },
     {
       "label": "Telecom",
-      "target": 0.04,
+      "value": 0.04,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.25
+          "value": 0.25
         },
         {
           "label": "aapl",
-          "target": 0.25
+          "value": 0.25
         },
         {
           "label": "googl",
-          "target": 0.25
+          "value": 0.25
         },
         {
           "label": "amzn",
-          "target": 0.25
+          "value": 0.25
         }
       ]
     },
     {
       "label": "Industrials",
-      "target": 0.10,
+      "value": 0.10,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.20
+          "value": 0.20
         },
         {
           "label": "aapl",
-          "target": 0.35
+          "value": 0.35
         },
         {
           "label": "googl",
-          "target": 0.20
+          "value": 0.20
         },
         {
           "label": "amzn",
-          "target": 0.25
+          "value": 0.25
         }
       ]
     },
     {
       "label": "Tech",
-      "target": 0.05,
+      "value": 0.05,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.34
+          "value": 0.34
         },
         {
           "label": "aapl",
-          "target": 0.04
+          "value": 0.04
         },
         {
           "label": "googl",
-          "target": 0.60
+          "value": 0.60
         },
         {
           "label": "amzn",
-          "target": 0.02
+          "value": 0.02
         }
       ]
     },
     {
       "label": "Energy",
-      "target": 0.05,
+      "value": 0.05,
       "subDoughnutsArray": [
         {
           "label": "nflx",
-          "target": 0.23
+          "value": 0.23
         },
         {
           "label": "aapl",
-          "target": 0.28
+          "value": 0.28
         },
         {
           "label": "googl",
-          "target": 0.32
+          "value": 0.32
         },
         {
           "label": "amzn",
-          "target": 0.27
+          "value": 0.27
         }
       ]
     }

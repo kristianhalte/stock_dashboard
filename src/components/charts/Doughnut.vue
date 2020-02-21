@@ -13,7 +13,7 @@
 <script>
 export default {
   name: 'Doughnut',
-  props: ['data'],
+  props: ['data', 'label', 'todaysValue'],
   data() {
     return {
       type: 'doughnut2d',
@@ -41,8 +41,16 @@ export default {
           // Legend Properties
           showLegend: 0,
           // Center Label Cosmetics
-          defaultCenterLabel: 'Portfolio $5,000',
-          centerLabel: 'Revenue from $label: $value',
+          defaultCenterLabel: `${this.label} ${this.$options.filters.numFormat(
+            this.todaysValue,
+            '$0,0.00'
+          )}`,
+          // defaultCenterLabel: this.label + ' ' + this.todaysValue,
+          centerLabel: `$label: ${this.$options.filters.numFormat(
+            '$value',
+            '0,0.00%'
+          )}`,
+          // centerLabel: '$label: $value',
           // Number Formatting
           decimals: 0,
         },

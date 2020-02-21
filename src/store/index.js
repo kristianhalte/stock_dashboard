@@ -206,8 +206,8 @@ export default new Vuex.Store({
       getDoughnutTodaysDividend(state.myDoughnutsData[id]),
     getDoughnutTodaysReturn: state => id =>
       getDoughnutTodaysReturn(state.myDoughnutsData[id]),
-    getDoughnutDoughnutData: state => id =>
-      getDoughnutDoughnutData(state.myDoughnutsData[id]),
+    getDoughnutDoughnutData: () => id =>
+      getDoughnutDoughnutData(doughnutsArray[id]),
     getDoughnutLineChartData: state => id =>
       getDoughnutLineChartData(state.myDoughnutsData[id]),
     getDoughnutTableData: state => id =>

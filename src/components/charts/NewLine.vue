@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'Line',
+  name: 'NewLine',
   props: ['data'],
   data() {
     return {
@@ -30,19 +30,6 @@ export default {
           lineThickness: 2,
         },
         data: this.data,
-        trendlines: [
-          {
-            line: [
-              {
-                startvalue: 18500,
-                color: '#29C3BE',
-                displayvalue: 'Average{br}weekly{br}footfall',
-                valueOnRight: 1,
-                thickness: 2,
-              },
-            ],
-          },
-        ],
       },
     }
   },
