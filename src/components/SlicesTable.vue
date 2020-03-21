@@ -4,13 +4,14 @@
     :columns="columns"
     :hoverable="true"
     @click="goToSlice"
+    :default-sort="['target', 'desc']"
   >
     <template slot-scope="props">
-      <b-table-column style="vertical-align:middle">
+      <b-table-column style="vertical-align:middle;">
         <span class="is-vcentered">{{ props.row.label }}</span>
       </b-table-column>
 
-      <b-table-column class="has-text-right" style="vertical-align:middle">
+      <b-table-column class="has-text-right" style="vertical-align:middle;">
         {{ props.row.value | numFormat('$0,0.00') }}
       </b-table-column>
 
@@ -83,7 +84,13 @@ export default {
         {
           field: 'actual',
           label: 'Actual/Target',
-          centered: true,
+          sortable: true,
+        },
+        {
+          field: 'target',
+          label: 'Sortable',
+          sortable: true,
+          visible: false,
         },
       ],
     }
