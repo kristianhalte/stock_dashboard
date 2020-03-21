@@ -1,0 +1,108 @@
+{
+  "targetPortfoliosArray": [
+    {
+      "label": "Bonds",
+      "target": 0.40,
+      "categories": [
+        {
+          "label": "European",
+          "target": 0.40,
+          "holdings": [
+            {
+              "label": "ishg",
+              "target": 0.60
+            }
+          ]
+        },
+        {
+          "label": "American",
+          "target": 0.60,
+          "holdings": [
+            {
+              "label": "lqd",
+              "target": 0.40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Index Funds",
+      "target": 0.30,
+      "categories": [
+        {
+          "label": "European",
+          "target": 0.20,
+          "holdings": [
+            {
+              "label": "dax",
+              "target": 0.60
+            }
+          ]
+        },
+        {
+          "label": "American",
+          "target": 0.15,
+          "holdings": [
+            {
+              "label": "dia",
+              "target": 0.70
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Dividend",
+      "target": 0.20,
+      "categories": [
+        {
+          "label": "Real Estate",
+          "target": 0.20,
+          "holdings": [
+            {
+              "label": "o",
+              "target": 0.22
+            }
+          ]
+        },
+        {
+          "label": "Bonds",
+          "target": 0.20,
+          "holdings": [
+            {
+              "label": "lqd",
+              "target": 0.40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "High Risk",
+      "target": 0.10,
+      "categories": [
+        {
+          "label": "Finance",
+          "target": 0.15,
+          "holdings": [
+            {
+              "label": "xrx",
+              "target": 0.40
+            }
+          ]
+        },
+        {
+          "label": "Health Care",
+          "target": 0.15,
+          "holdings": [
+            {
+              "label": "nvo",
+              "target": 0.80
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

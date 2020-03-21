@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Breadcrumb :key="'home'" :data="breadcrumb" />
+    <Breadcrumb :key="port_id" :data="breadcrumb" />
     <div class="columns">
       <div class="column is-two-fifths">
         <div class="section">
           <p class="subtitle is-4" v-if="loading">{{ $t('loading') }}</p>
           <DoughnutChart
             v-else
-            :key="'home'"
+            :key="cat_id"
             :chartData="doughnutChartData"
             :label="label"
             :value="value"
@@ -19,7 +19,6 @@
           <p v-if="loading">{{ $t('loading') }}</p>
           <Dashboard
             v-else
-            :key="dateRange"
             :loading="loading"
             :label="label"
             :value="value"
@@ -33,7 +32,7 @@
             <p v-if="loading">{{ $t('loading') }}</p>
             <PlotChart
               v-else
-              :key="dateRange"
+              :key="cat_id + dateRange"
               :chartData="plotChartData"
               :label="label"
               :value="value"
@@ -47,7 +46,7 @@
           <p v-if="loading">{{ $t('loading') }}</p>
           <SlicesTable
             v-else
-            :key="dateRange"
+            :key="cat_id + dateRange"
             :table-data="tableData"
             :route-to="route"
           />
@@ -65,7 +64,7 @@ import Dashboard from '@/components/Dashboard.vue'
 import PlotChart from '@/components/charts/PlotChart.vue'
 import SlicesTable from '@/components/SlicesTable.vue'
 export default {
-  name: 'home',
+  name: 'categories',
   components: {
     Breadcrumb,
     DoughnutChart,
@@ -73,18 +72,55 @@ export default {
     PlotChart,
     SlicesTable,
   },
+  props: ['port_id', 'cat_id'],
   data() {
     return {
-      route: 'portfolios',
+      route: null,
       breadcrumb: [
         {
           id: 0,
           name: 'My Portfolios',
-          href: '',
+          href: '/',
+          isLast: false,
+        },
+        {
+          id: 1,
+          name: this.port_id,
+          href: '/portfolios/' + this.port_id,
+          isLast: false,
+        },
+        {
+          id: 2,
+          name: this.cat_id,
+          href: '/portfolios/' + this.port_id + '/categories/' + this.cat_id,
           isLast: true,
         },
       ],
     }
+  },
+  watch: {
+    cat_id: function(cat_id) {
+      this.breadcrumb = [
+        {
+          id: 0,
+          name: 'My Portfolios',
+          href: '/',
+          isLast: false,
+        },
+        {
+          id: 1,
+          name: this.port_id,
+          href: '/portfolios/' + this.port_id,
+          isLast: false,
+        },
+        {
+          id: 2,
+          name: cat_id,
+          href: '/portfolios/' + this.port_id + '/categories/' + cat_id,
+          isLast: true,
+        },
+      ]
+    },
   },
   computed: {
     ...mapState({
@@ -92,28 +128,51 @@ export default {
       dateRange: state => state.dateRange,
     }),
     label() {
-      return this.$store.getters.mainLabel
+      return this.$store.getters.categoryLabel(this.port_id, this.cat_id)
     },
     value() {
-      return this.$store.getters.mainValue
+      return this.$store.getters.categoryValue(this.port_id, this.cat_id)
     },
     gain() {
-      return this.$store.getters.mainGain(this.dateRange)
+      return this.$store.getters.categoryGain(
+        this.port_id,
+        this.cat_id,
+        this.dateRange
+      )
     },
     dividend() {
-      return this.$store.getters.mainDividend(this.dateRange)
+      return this.$store.getters.categoryDividend(
+        this.port_id,
+        this.cat_id,
+        this.dateRange
+      )
     },
     returns() {
-      return this.$store.getters.mainReturns(this.dateRange)
+      return this.$store.getters.categoryReturns(
+        this.port_id,
+        this.cat_id,
+        this.dateRange
+      )
     },
     doughnutChartData() {
-      return this.$store.getters.mainDoughnutChartData
+      return this.$store.getters.categoryDoughnutChartData(
+        this.port_id,
+        this.cat_id
+      )
     },
     plotChartData() {
-      return this.$store.getters.mainPlotChartData(this.dateRange)
+      return this.$store.getters.categoryPlotChartData(
+        this.port_id,
+        this.cat_id,
+        this.dateRange
+      )
     },
     tableData() {
-      return this.$store.getters.mainTableData(this.dateRange)
+      return this.$store.getters.categoryTableData(
+        this.port_id,
+        this.cat_id,
+        this.dateRange
+      )
     },
   },
 }

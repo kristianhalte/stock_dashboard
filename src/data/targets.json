@@ -1,0 +1,466 @@
+{
+  "targetPortfoliosArray": [
+    {
+      "label": "Bonds",
+      "target": 0.40,
+      "categories": [
+        {
+          "label": "European",
+          "target": 0.40,
+          "holdings": [
+            {
+              "label": "ishg",
+              "target": 0.60
+            },
+            {
+              "label": "bwz",
+              "target": 0.30
+            },
+            {
+              "label": "igov",
+              "target": 0.10
+            }
+          ]
+        },
+        {
+          "label": "American",
+          "target": 0.60,
+          "holdings": [
+            {
+              "label": "lqd",
+              "target": 0.40
+            },
+            {
+              "label": "bndx",
+              "target": 0.30
+            },
+            {
+              "label": "shy",
+              "target": 0.30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Index Funds",
+      "target": 0.30,
+      "categories": [
+        {
+          "label": "European",
+          "target": 0.20,
+          "holdings": [
+            {
+              "label": "dax",
+              "target": 0.60
+            },
+            {
+              "label": "eden",
+              "target": 0.20
+            },
+            {
+              "label": "vgk",
+              "target": 0.20
+            }
+          ]
+        },
+        {
+          "label": "American",
+          "target": 0.15,
+          "holdings": [
+            {
+              "label": "dia",
+              "target": 0.70
+            },
+            {
+              "label": "voo",
+              "target": 0.20
+            },
+            {
+              "label": "ndaq",
+              "target": 0.10
+            }
+          ]
+        },
+        {
+          "label": "Asian",
+          "target": 0.15,
+          "holdings": [
+            {
+              "label": "jpxn",
+              "target": 0.40
+            },
+            {
+              "label": "fxi",
+              "target": 0.30
+            },
+            {
+              "label": "inda",
+              "target": 0.30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Dividend",
+      "target": 0.20,
+      "categories": [
+        {
+          "label": "Real Estate",
+          "target": 0.20,
+          "holdings": [
+            {
+              "label": "o",
+              "target": 0.22
+            },
+            {
+              "label": "ltc",
+              "target": 0.18
+            },
+            {
+              "label": "well",
+              "target": 0.16
+            },
+            {
+              "label": "nrz",
+              "target": 0.16
+            },
+            {
+              "label": "stor",
+              "target": 0.14
+            },
+            {
+              "label": "spg",
+              "target": 0.14
+            }
+          ]
+        },
+        {
+          "label": "Bonds",
+          "target": 0.20,
+          "holdings": [
+            {
+              "label": "lqd",
+              "target": 0.40
+            },
+            {
+              "label": "bndx",
+              "target": 0.30
+            },
+            {
+              "label": "ief",
+              "target": 0.10
+            },
+            {
+              "label": "iei",
+              "target": 0.10
+            },
+            {
+              "label": "shy",
+              "target": 0.10
+            }
+          ]
+        },
+        {
+          "label": "Finance",
+          "target": 0.14,
+          "holdings": [
+            {
+              "label": "jpm",
+              "target": 0.24
+            },
+            {
+              "label": "main",
+              "target": 0.18
+            },
+            {
+              "label": "bac",
+              "target": 0.17
+            },
+            {
+              "label": "afl",
+              "target": 0.10
+            },
+            {
+              "label": "ry",
+              "target": 0.09
+            },
+            {
+              "label": "td",
+              "target": 0.08
+            },
+            {
+              "label": "trow",
+              "target": 0.08
+            },
+            {
+              "label": "wfc",
+              "target": 0.06
+            }
+          ]
+        },
+        {
+          "label": "Utilities",
+          "target": 0.12,
+          "holdings": [
+            {
+              "label": "d",
+              "target": 0.31
+            },
+            {
+              "label": "so",
+              "target": 0.26
+            },
+            {
+              "label": "duk",
+              "target": 0.23
+            },
+            {
+              "label": "nee",
+              "target": 0.20
+            }
+          ]
+        },
+        {
+          "label": "Health Care",
+          "target": 0.11,
+          "holdings": [
+            {
+              "label": "mrk",
+              "target": 0.28
+            },
+            {
+              "label": "jnj",
+              "target": 0.23
+            },
+            {
+              "label": "mdt",
+              "target": 0.13
+            },
+            {
+              "label": "unh",
+              "target": 0.11
+            },
+            {
+              "label": "amgn",
+              "target": 0.10
+            },
+            {
+              "label": "abbv",
+              "target": 0.08
+            },
+            {
+              "label": "pfe",
+              "target": 0.07
+            }
+          ]
+        },
+        {
+          "label": "Consumer",
+          "target": 0.08,
+          "holdings": [
+            {
+              "label": "dis",
+              "target": 0.32
+            },
+            {
+              "label": "cost",
+              "target": 0.17
+            },
+            {
+              "label": "tgt",
+              "target": 0.13
+            },
+            {
+              "label": "hd",
+              "target": 0.12
+            },
+            {
+              "label": "nke",
+              "target": 0.08
+            },
+            {
+              "label": "cmcsa",
+              "target": 0.07
+            },
+            {
+              "label": "ko",
+              "target": 0.06
+            },
+            {
+              "label": "el",
+              "target": 0.05
+            }
+          ]
+        },
+        {
+          "label": "Telecom",
+          "target": 0.07,
+          "holdings": [
+            {
+              "label": "t",
+              "target": 0.80
+            },
+            {
+              "label": "vz",
+              "target": 0.20
+            }
+          ]
+        },
+        {
+          "label": "Industrials",
+          "target": 0.04,
+          "holdings": [
+            {
+              "label": "unp",
+              "target": 0.23
+            },
+            {
+              "label": "wm",
+              "target": 0.20
+            },
+            {
+              "label": "lmt",
+              "target": 0.20
+            },
+            {
+              "label": "ba",
+              "target": 0.20
+            },
+            {
+              "label": "mmm",
+              "target": 0.17
+            }
+          ]
+        },
+        {
+          "label": "Tech",
+          "target": 0.03,
+          "holdings": [
+            {
+              "label": "aapl",
+              "target": 0.30
+            },
+            {
+              "label": "msft",
+              "target": 0.25
+            },
+            {
+              "label": "avgo",
+              "target": 0.18
+            },
+            {
+              "label": "v",
+              "target": 0.14
+            },
+            {
+              "label": "csco",
+              "target": 0.13
+            }
+          ]
+        },
+        {
+          "label": "Energy",
+          "target": 0.01,
+          "holdings": [
+            {
+              "label": "cvx",
+              "target": 0.60
+            },
+            {
+              "label": "xom",
+              "target": 0.40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "High Risk",
+      "target": 0.10,
+      "categories": [
+        {
+          "label": "Finance",
+          "target": 0.15,
+          "holdings": [
+            {
+              "label": "xrx",
+              "target": 0.40
+            },
+            {
+              "label": "sq",
+              "target": 0.40
+            },
+            {
+              "label": "gs",
+              "target": 0.20
+            }
+          ]
+        },
+        {
+          "label": "Health Care",
+          "target": 0.15,
+          "holdings": [
+            {
+              "label": "nvo",
+              "target": 0.80
+            },
+            {
+              "label": "pfe",
+              "target": 0.10
+            }
+          ]
+        },
+        {
+          "label": "Consumer",
+          "target": 0.30,
+          "holdings": [
+            {
+              "label": "dis",
+              "target": 0.35
+            },
+            {
+              "label": "nke",
+              "target": 0.25
+            },
+            {
+              "label": "addyy",
+              "target": 0.30
+            },
+            {
+              "label": "uaa",
+              "target": 0.20
+            }
+          ]
+        },
+        {
+          "label": "Tech",
+          "target": 0.40,
+          "holdings": [
+            {
+              "label": "baba",
+              "target": 0.10
+            },
+            {
+              "label": "nflx",
+              "target": 0.20
+            },
+            {
+              "label": "amzn",
+              "target": 0.30
+            },
+            {
+              "label": "aapl",
+              "target": 0.30
+            },
+            {
+              "label": "fb",
+              "target": 0.10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

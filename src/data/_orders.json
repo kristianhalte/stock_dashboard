@@ -1,0 +1,224 @@
+{
+  "ordersArray": [
+    {
+      "type": "buy",
+      "ticker": "ishg",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Bonds",
+      "category": "European"
+    },
+    {
+      "type": "buy",
+      "ticker": "lqd",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Bonds",
+      "category": "American"
+    },
+    {
+      "type": "buy",
+      "ticker": "dax",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Index Funds",
+      "category": "European"
+    },
+    {
+      "type": "buy",
+      "ticker": "dia",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Index Funds",
+      "category": "American"
+    },
+    {
+      "type": "buy",
+      "ticker": "jpxn",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Index Funds",
+      "category": "Asian"
+    },
+    {
+      "type": "buy",
+      "ticker": "o",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Real Estate"
+    },
+    {
+      "type": "buy",
+      "ticker": "lqd",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Bonds"
+    },
+    {
+      "type": "buy",
+      "ticker": "jpm",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Finance"
+    },
+    {
+      "type": "buy",
+      "ticker": "main",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Finance"
+    },
+    {
+      "type": "buy",
+      "ticker": "d",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Utilities"
+    },
+    {
+      "type": "buy",
+      "ticker": "mrk",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Health Care"
+    },
+    {
+      "type": "buy",
+      "ticker": "dis",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Consumer"
+    },
+    {
+      "type": "buy",
+      "ticker": "t",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Telecom"
+    },
+    {
+      "type": "buy",
+      "ticker": "unp",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Industrials"
+    },
+    {
+      "type": "buy",
+      "ticker": "aapl",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Tech"
+    },
+    {
+      "type": "buy",
+      "ticker": "cvx",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "Dividend",
+      "category": "Energy"
+    },
+    {
+      "type": "buy",
+      "ticker": "xrx",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "High Risk",
+      "category": "Finance"
+    },
+    {
+      "type": "buy",
+      "ticker": "nvo",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "High Risk",
+      "category": "Health Care"
+    },
+    {
+      "type": "buy",
+      "ticker": "dis",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "High Risk",
+      "category": "Consumer"
+    },
+    {
+      "type": "buy",
+      "ticker": "baba",
+      "date": "2020-01-03",
+      "price": 100,
+      "currency": "usd",
+      "fee": 3,
+      "quantity": 1,
+      "portfolio": "High Risk",
+      "category": "Tech"
+    }
+  ]
+}

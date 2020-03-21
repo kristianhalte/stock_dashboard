@@ -4,48 +4,23 @@
       :type="type"
       :width="width"
       :dataFormat="dataFormat"
-      :dataSource="testDataSource"
-      @beforeDataUpdate="beforeDataUpdate"
-      @dataUpdated="dataUpdated"
-      @drawComplete="drawComplete"
-      @renderComplete="renderComplete"
+      :dataSource="dataSource"
     >
     </fusioncharts>
-    <div v-html="displayValue"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Doughnut',
-  props: ['data', 'label', 'todaysValue'],
-  methods: {
-    // Binding Life Cycle events
-    beforeDataUpdate: function() {
-      const prevValue = this.displayValue
-      this.displayValue = prevValue + ' beforeDataUpdate'
-    },
-    dataUpdated: function() {
-      const prevValue = this.displayValue
-      this.displayValue = prevValue + ', dataUpdated'
-    },
-    drawComplete: function() {
-      const prevValue = this.displayValue
-      this.displayValue = prevValue + ', drawComplete'
-    },
-    renderComplete: function() {
-      const prevValue = this.displayValue
-      this.displayValue = prevValue + ', renderComplete'
-    },
-  },
+  name: 'DoughnutChart',
+  props: ['chartData', 'label', 'value'],
   data() {
     return {
-      displayValue: '<b>Status: </b>',
       type: 'doughnut2d',
       width: '100%',
       height: '100%',
       dataFormat: 'json',
-      testDataSource: {
+      dataSource: {
         chart: {
           // Functional Attribues
           showLabels: 0,
@@ -67,7 +42,7 @@ export default {
           showLegend: 0,
           // Center Label Cosmetics
           defaultCenterLabel: `${this.label} ${this.$options.filters.numFormat(
-            this.todaysValue,
+            this.value,
             '$0,0.00'
           )}`,
           // defaultCenterLabel: this.label + ' ' + this.todaysValue,
@@ -79,7 +54,7 @@ export default {
           // Number Formatting
           decimals: 0,
         },
-        data: this.data,
+        data: this.chartData,
       },
     }
   },

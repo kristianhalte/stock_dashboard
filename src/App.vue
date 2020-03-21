@@ -5,8 +5,14 @@
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
           {{ $t('home') }}
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/portfolios/0' }">
-          {{ $t('portfolios') }}
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+          {{ $t('transactions') }}
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+          {{ $t('search') }}
+        </b-navbar-item>
+        <b-navbar-item @click="downloadData">
+          Download Data
         </b-navbar-item>
       </template>
     </b-navbar>
@@ -17,10 +23,24 @@
 </template>
 
 <script>
+import { getNewData } from '@/services'
 export default {
   name: 'app',
-  created() {
-    this.$store.dispatch('loadData')
+  // created() {
+  //   this.$store.dispatch('loadData')
+  // },
+  methods: {
+    downloadData() {
+      getNewData().then(response => {
+        const data = JSON.stringify(response)
+        const fileURL = window.URL.createObjectURL(new Blob([data]))
+        const fileLink = document.createElement('a')
+        fileLink.href = fileURL
+        fileLink.setAttribute('download', 'data.json')
+        document.body.appendChild(fileLink)
+        fileLink.click()
+      })
+    },
   },
 }
 </script>
