@@ -1,9 +1,8 @@
 <template>
   <div>
-    <Breadcrumb :key="'home'" :data="breadcrumb" />
     <div class="columns">
       <div class="column is-two-fifths">
-        <div class="section">
+        <div class="box">
           <p class="subtitle is-4" v-if="loading">{{ $t('loading') }}</p>
           <DoughnutChart
             v-else
@@ -12,6 +11,7 @@
             :label="label"
             :value="value"
           />
+          <b-button type="is-primary" expanded>Small</b-button>
         </div>
       </div>
       <div class="column is-three-fifths">
@@ -59,7 +59,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb.vue'
 import DoughnutChart from '@/components/charts/DoughnutChart.vue'
 import Dashboard from '@/components/Dashboard.vue'
 import PlotChart from '@/components/charts/PlotChart.vue'
@@ -67,7 +66,6 @@ import SlicesTable from '@/components/SlicesTable.vue'
 export default {
   name: 'home',
   components: {
-    Breadcrumb,
     DoughnutChart,
     Dashboard,
     PlotChart,
@@ -76,14 +74,6 @@ export default {
   data() {
     return {
       route: 'portfolios',
-      breadcrumb: [
-        {
-          id: 0,
-          name: 'My Portfolios',
-          href: '',
-          isLast: true,
-        },
-      ],
     }
   },
   computed: {

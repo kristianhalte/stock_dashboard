@@ -11,15 +11,18 @@
         <div class="level-item">
           <div>
             <div class="buttons is-marginless">
-              <button
+              <b-button
+                class="has-text-weight-bold"
+                size="is-small"
+                rounded
+                type="is-light"
                 v-for="button in buttons"
-                class="button is-rounded"
                 :class="{ 'is-primary': button.value === activeButton }"
                 @click="datePicker(button.value)"
                 :key="button.value"
               >
                 {{ button.label }}
-              </button>
+              </b-button>
             </div>
             <p class="has-text-right has-text-grey">
               Performance since Jan 01, 2020
@@ -93,3 +96,10 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+::v-deep .button {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+</style>

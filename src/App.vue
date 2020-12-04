@@ -50,9 +50,9 @@ export default {
 @import '~bulma/sass/utilities/_all';
 
 // Set your colors
-$primary: rgba(91, 193, 190, 1);
+$primary: rgb(24, 196, 190);
 $primary-invert: findColorInvert($primary);
-$twitter: #4099ff;
+$twitter: #139c98;
 $twitter-invert: findColorInvert($twitter);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')

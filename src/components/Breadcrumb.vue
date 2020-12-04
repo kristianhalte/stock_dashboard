@@ -1,5 +1,8 @@
 <template>
-  <nav class="breadcrumb" aria-label="breadcrumbs">
+  <nav
+    class="breadcrumb is-size-7 has-text-weight-semibold"
+    aria-label="breadcrumbs"
+  >
     <ul>
       <li
         v-for="item in data"
